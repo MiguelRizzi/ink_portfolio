@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     # my apps
     'users.apps.UsersConfig',
     'portfolio.apps.PortfolioConfig',
+    # 3rd party apps
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

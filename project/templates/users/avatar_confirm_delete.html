@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="fw-bolder display-5 mb-4">¿{{ object.user }} confirmas eliminar tu avatar?</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="d-grid gap-3">
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+        </div>
+    </form>
+    {% url 'portfolio:index' as url %}
+    {% include 'components/index_back.html' with link=url %}
+{% endblock %}
