@@ -42,6 +42,7 @@ class TattooCreateView(LoginRequiredMixin, CreateView):
  
 class TattooDelete(LoginRequiredMixin, DeleteView):
     model = models.Tattoo
+    template_name= "portfolio/confirm_delete.html"
     success_url = reverse_lazy("portfolio:tattoo_list")
 
     def get_success_url(self):
@@ -58,3 +59,47 @@ class TattooUpdate(LoginRequiredMixin, UpdateView):
         messages.success(self.request, "El tatuaje se actualizó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
  
+
+ # Designs
+    
+class DesignDetail(LoginRequiredMixin, DetailView):
+    model = models.Design
+
+
+class DesignList(LoginRequiredMixin, ListView):
+    model = models.Design
+    def get_queryset(self):
+        if self.request.GET.get("consult"):
+            query = self.request.GET.get("consult")
+            object_list = models.Design.objects.filter(title__icontains=query)
+        else:
+            object_list = models.Design.objects.all()
+        return object_list
+
+class DesignCreateView(LoginRequiredMixin, CreateView):
+    model = models.Design
+    form_class = forms.DesignForm
+    success_url = reverse_lazy("portfolio:design_list")
+
+    def form_valid(self, form):
+        messages.success(self.request, "El diseño se guardó correctamente.", extra_tags="alert alert-success")
+        return super().form_valid(form)
+ 
+class DesignDelete(LoginRequiredMixin, DeleteView):
+    model = models.Design
+    template_name= "portfolio/confirm_delete.html"
+    success_url = reverse_lazy("portfolio:design_list")
+
+    def get_success_url(self):
+            messages.success(self.request, "El diseño se eliminó correctamente.", extra_tags="alert alert-danger")
+            return super().get_success_url()
+    
+
+class DesignUpdate(LoginRequiredMixin, UpdateView):
+    model = models.Design
+    success_url = reverse_lazy("portfolio:design_list")
+    form_class = forms.DesignForm
+
+    def form_valid(self, form):
+        messages.success(self.request, "El diseño se actualizó correctamente.", extra_tags="alert alert-success")
+        return super().form_valid(form)

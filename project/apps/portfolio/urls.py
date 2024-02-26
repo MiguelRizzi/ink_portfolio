@@ -11,5 +11,10 @@ urlpatterns = [
     path("tattoo/create/", views.TattooCreateView.as_view(), name="tattoo_create"),
     path("tattoo/delete/<int:pk>", views.TattooDelete.as_view(), name="tattoo_delete"),
     path("tattoo/update/<int:pk>", views.TattooUpdate.as_view(), name="tattoo_update"),
-
+    # Designs
+    path("design/detail/<int:pk>", views.DesignDetail.as_view(), name="design_detail"),
+    path("design/list/", views.DesignList.as_view(), name="design_list"),
+    path("design/create/", views.DesignCreateView.as_view(), name="design_create"),
+    path("design/delete/<int:pk>", views.DesignDelete.as_view(), name="design_delete"),
+    path("design/update/<int:pk>", views.DesignUpdate.as_view(), name="design_update"),
 ]

@@ -1,0 +1,51 @@
+{% extends 'components/list.html' %}
+
+{% block title_2 %}Listado de diseños{% endblock %}
+{% block search %}
+    <!-- Sirve para buscar diseños. Se pasa a la variable consulta de la vista. -->
+    <div class="py-lg-4">
+        <form action="{% url 'portfolio:tattoo_list' %}" method="get">
+            <input name="consult" type="text" placeholder="Buscar...">
+        </form>
+    </div>
+{% endblock search %}
+       
+{% block table_header %}
+    <tr>
+        <th>Titulo</th>
+        <th>Foto</th>
+        <th>Disponible</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+    </tr>
+{% endblock table_header %}
+     
+{% block table_body %}
+    {% for design in object_list %}
+        <tr>
+            <td>{{ design.title }}</td>
+            {% if design.image %}
+                <td><a href="{{ design.image.url }}">Ver foto</a></td>
+            {% else %}
+                <td>Sin foto</td>
+            {% endif %}
+            {% if design.available %}
+                <td class="text-success"><i class="fa fa-check"></i></td>
+            {% else %}
+                <td class="text-danger"><i class="fa fa-times"></i></td>
+            {% endif %}
+            <td>
+                <a href="{% url 'portfolio:design_detail' design.id %}" class="btn btn-primary">Detalle</a>
+            </td>
+            <td>
+                <a href="{% url 'portfolio:design_update' design.id %}" class="btn btn-success">Actualizar</a>
+            </td>
+            <td>
+                <a href="{% url 'portfolio:design_delete' design.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock table_body %}
+

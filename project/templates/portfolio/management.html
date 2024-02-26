@@ -6,7 +6,7 @@
         <h2 class="display-5 mb-4 mt-5">Administración</h2>
 
         <div class="d-flex justify-content-center align-items-center">
-            <div class="col-md-9 col-lg-7 col-12 p-sm-5 p-4">
+            <div class="col-md-9 col-lg-7 col-12 p-sm-5 p-4 fondo rounded-5">
                 <div>
                     <h2 class="fw-bolder display-5 my-4 revelar text-uppercase">Tatuajes</h3>
                     <div class="d-grid gap-3 revelar izquierda">
@@ -16,8 +16,8 @@
                         
                     <h2 class="fw-bolder display-5 mb-4 revelar text-uppercase">Diseños</h3>
                     <div class="d-grid gap-3 revelar derecha">
-                        <a href="" class="btn btn-success">Agregar</a>
-                        <a href="" class="btn btn-success">Ver todos</a> <br>
+                        <a href="{% url 'portfolio:design_create' %}" class="btn btn-success">Agregar</a>
+                        <a href="{% url 'portfolio:design_list' %}" class="btn btn-success">Ver todos</a> <br>
                     </div>
                 </div>
                 {% url 'portfolio:index' as url %}

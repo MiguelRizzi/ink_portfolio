@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <section class="container-fluid p-md-5 p-2">
+        <h2 class="fw-bolder display-5 mb-4 mt-5">Diseño</h2>
+        
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="col-md-9 col-lg-7 col-12 rounded-5 p-sm-5 p-4 fondo">
+                <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                        {% if field.name == "available" %}
+                            <div class="form-group d-flex justify-content-center">
+                                <label for="{{ field.id_for_label }}" class="px-3">Available: </label>
+                                {{ field }}
+                            </div>
+                        {% else %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field|add_class:"form-control" }}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+            
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger mt-3">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <div class="d-grid gap-3 mt-5">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+                {% url 'portfolio:management' as url %}
+                {% include 'components/index_back.html' with link=url %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
