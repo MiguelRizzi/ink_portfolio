@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from .forms import AvatarForm
 from .models import Avatar
 from django.contrib import messages
+from django.contrib.auth.views import PasswordChangeView
+
 
 # Create your views here.
 class AvatarDetail(LoginRequiredMixin, DetailView):
@@ -37,3 +39,7 @@ class AvatarDelete(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         messages.success(self.request, "El Avatar se eliminó correctamente.", extra_tags="alert alert-danger")
         return super().get_success_url()
+    
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name="users/change_password.html"
+    success_url = reverse_lazy('portfolio:index')

@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+# For the LOGIN variables.
+from django.urls import reverse_lazy
+
 # sys.path to add the path of the "apps" folder
 import sys
 
@@ -138,3 +141,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#! Login
+LOGIN_URL = reverse_lazy("users:login")
+LOGIN_REDIRECT_URL = reverse_lazy("portfolio:index")

@@ -2,9 +2,9 @@
 {% load widget_tweaks %}
 
 {% block content %}
-    <section class="containerfluid p-md-5 p-2">
-        <h2 class="fw-bolder display-5 mb-4 mt-5">Avatar</h2>
-            
+    <section class="containerfluid p-md-5 p-2"></div>
+        <h2 class="display-5 mb-4 mt-5">Iniciar Sesión</h2>
+
         <div class="px-sm-3 px-md-5 mx-sm-3 mx-md-5 fondo">
             <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
                 {% csrf_token %}
@@ -18,7 +18,7 @@
                         {% endfor %}
                     </div>
                 {% endfor %}
-        
+
                 {% if form.non_field_errors %}
                     <div class="alert alert-danger mt-3">
                         {% for error in form.non_field_errors %}
@@ -31,8 +31,9 @@
                     <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
             </form>
+
             {% url 'portfolio:index' as url %}
             {% include 'components/index_back.html' with link=url %}
         </div>
     </section>
-{% endblock %}
+{% endblock content %}

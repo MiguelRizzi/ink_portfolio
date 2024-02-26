@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="containerfluid p-md-5 p-2">
+        <h2 class="display-5 mb-4 mt-5">Logout</h2>
+
+        <div class="px-sm-3 px-md-5 mx-sm-3 mx-md-5">
+            <div class="fs-3 fst-italic">
+                <p>Has salido de la sesión...</p>
+            </div>
+
+            {% url 'portfolio:index' as url %}
+            {% include 'components/index_back.html' with link=url %}
+        </div>
+    </section>
+{% endblock content %}
