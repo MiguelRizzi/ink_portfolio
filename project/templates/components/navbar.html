@@ -33,18 +33,19 @@
                         {% endif %}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'portfolio:management' %}">Administrar sitio</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="">Mensajes</a></li>
+                        <li><hr class="dropdown-divider"></li>
                         {% if not user.avatar %}
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_create' %}">Cargar avatar</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:avatar_create' %}">Cargar avatar</a></li>
                         {% else %}
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_detail' user.avatar.pk %}">Ver Avatar</a></li>
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_update' user.avatar.pk %}">Actualizar Avatar</a></li>
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_delete' user.avatar.pk %}">Eliminar Avatar</a></li>
-
+                        <li><a class="dropdown-item" href="{% url 'users:avatar_detail' user.avatar.pk %}">Ver Avatar</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:avatar_update' user.avatar.pk %}">Actualizar Avatar</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:avatar_delete' user.avatar.pk %}">Eliminar Avatar</a></li>
                         {% endif %}
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{% url 'users:change_password' %}">Cambiar contraseña</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="">Administrar sitio</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{% url 'users:logout' %}" method="post">
