@@ -20,8 +20,16 @@
     {% for review in object_list %}
         <tr>
             <td>{{ review.name }}</td>
-            <td>{{ review.rating }}</td>
-            <td>{{ review.aproved }}</td>
+            <td>
+                {% for i in "x"|ljust:review.rating %}
+                    ⭐
+                {% endfor %}
+            </td>
+            {% if review.aproved %}
+                <td class="text-success"><i class="fa fa-check"></i></td>
+            {% else %}
+                <td class="text-danger"><i class="fa fa-times"></i></td>
+            {% endif %}
        
             <td>
                 <a href="{% url 'reviews:review_detail' review.id %}" class="btn btn-primary">Detalle</a>
