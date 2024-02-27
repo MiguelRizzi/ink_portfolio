@@ -9,11 +9,12 @@ class Review(models.Model):
         (4, '4 - Bueno'),
         (5, '5 - Excelente'),
     ]
-    name = models.TextField(max_length=100)
+    name = models.CharField(max_length=100)
     email = models.EmailField()
     rating = models.IntegerField(choices=RATING_CHOICES)
-    review = models.TextField()
+    review = models.TextField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
+    aproved = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

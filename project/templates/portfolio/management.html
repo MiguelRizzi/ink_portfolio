@@ -19,6 +19,11 @@
                         <a href="{% url 'portfolio:design_create' %}" class="btn btn-success">Agregar</a>
                         <a href="{% url 'portfolio:design_list' %}" class="btn btn-success">Ver todos</a> <br>
                     </div>
+                    <h2 class="fw-bolder display-5 mb-4 revelar text-uppercase">Reseñas</h3>
+                        <div class="d-grid gap-3 revelar derecha">
+                            <a href="{% url 'reviews:review_create' %}" class="btn btn-success">Agregar</a>
+                            <a href="{% url 'reviews:review_list' %}" class="btn btn-success">Ver todas</a> <br>
+                        </div>
                 </div>
                 {% url 'portfolio:index' as url %}
                 {% include 'components/index_back.html' with link=url %}

@@ -1,0 +1,37 @@
+{% extends 'components/list.html' %}
+
+{% block title_2 %}Listado de reseñas{% endblock %}
+{% block search %}
+{% endblock search %}
+       
+{% block table_header %}
+    <tr>
+        <th>Nombre</th>
+        <th>Valoración</th>
+        <th>Aprobado</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+    </tr>
+{% endblock table_header %}
+     
+{% block table_body %}
+    {% for review in object_list %}
+        <tr>
+            <td>{{ review.name }}</td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.aproved }}</td>
+       
+            <td>
+                <a href="{% url 'reviews:review_detail' review.id %}" class="btn btn-primary">Detalle</a>
+            </td>
+            <td>
+                <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-success">Aprobar</a>
+            </td>
+            <td>
+                <a href="{% url 'reviews:review_delete' review.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock table_body %}
