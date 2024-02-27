@@ -53,7 +53,6 @@ class TattooCreateView(LoginRequiredMixin, CreateView):
  
 class TattooDelete(LoginRequiredMixin, DeleteView):
     model = models.Tattoo
-    template_name= "portfolio/confirm_delete.html"
     success_url = reverse_lazy("portfolio:tattoo_list")
 
     def get_success_url(self):
@@ -98,7 +97,6 @@ class DesignCreateView(LoginRequiredMixin, CreateView):
  
 class DesignDelete(LoginRequiredMixin, DeleteView):
     model = models.Design
-    template_name= "portfolio/confirm_delete.html"
     success_url = reverse_lazy("portfolio:design_list")
 
     def get_success_url(self):

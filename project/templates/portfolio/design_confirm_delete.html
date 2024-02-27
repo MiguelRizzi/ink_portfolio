@@ -2,24 +2,18 @@
 
 {% block content %}
     <section class="container-fluid p-md-5 p-2">
-        <h2 class="fw-bolder display-5 mb-4 mt-5">
-            {% if object.is_read %}
-                ¿Marcar como no leido?
-            {% else %}
-                ¿Marcar como leido?
-            {% endif %}
-        </h2>
+        <h2 class="fw-bolder display-5 mb-4 mt-5">¿Confirmas eliminar el diseño "{{ object }}"?</h2>
         
         <div class="d-flex justify-content-center align-items-center">
             <div class="col-md-9 col-lg-7 col-12 p-sm-5 p-4">
                 <form method="post">
                     {% csrf_token %}
                     <div class="d-grid gap-3">
-                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="submit" class="btn btn-danger">Confirmar</button>
                     </div>
                 </form>
                 
-                {% url 'portfolio:message_list' as url %}
+                {% url 'portfolio:design_list' as url %}
                 {% include 'components/index_back.html' with link=url %}
             </div>
         </div>

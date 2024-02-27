@@ -1,0 +1,11 @@
+
+{% if messages %}
+        <ul class="messages list-unstyled">
+            {% for message in messages %}
+                <li class="{{ message.tags }} alert-dismissible fade show mt-4">{{ message }}</li>
+            {% endfor %}
+        </ul>
+{% endif %}
+
+
+
