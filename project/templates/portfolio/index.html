@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block header %}
     <header id="inicio">
@@ -28,11 +29,6 @@
                         ¡Hola! Soy Ayelén, una tatuadora apasionada con 9 años de experiencia en la hermosa ciudad de Tandil. Me especializo en los estilos de tatuaje neotradicional y anime, creando diseños personalizados para que obtengas una pieza única. ¿Estás listo para tatuarte conmigo? ¡Contáctame y juntos crearemos un tatuaje que te acompañará toda la vida. ¡Hagamos magia en la piel! ✨🖤
                     </p>
                 </div>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="https://github.com/MiguelRizzi" class="btn btn-outline-success btn-lg px-4 shadow-success" target="_blank">
-                        <i class="bi bi-whatsapp fs-4"></i> Whatsapp
-                    </a>
-                </div>
             </div>
             <div class="col-md-5 col-12 rounded border-dark mb-5 mb-md-0 div-foto p-sm-0 p-4">
                 <img class="w-90 w-md-100 img-thumbnail foto shadow-secondary" src="{% static 'img/tatuando.jpg' %}" alt="Foto Tatuando">
@@ -43,39 +39,41 @@
     <section id="contacto" class="container-fluid p-md-5 p-2">
         <h2 class="display-4 text-uppercase title-shadow pt-4 fw-bolder">Contacto</h2>
         <div class="row align-items-center justify-content-center mb-5">
-            <form 
-                action="https://formspree.io/f/xeqbpqqa"
-                method="POST"
-                class="col-md-9 col-lg-7 col-12 rounded-5 p-sm-5 p-4 fondo"
-            >
-                <div class="row mb-3">
-                    <div class="col-md mb-3 mb-md-0">
-                        <div class="form-floating">
-                            <input type="text" class="form-control shadow-info" id="nombre" placeholder="Nombre" name="nombre">
-                            <label for="nombre">Nombre</label>
-                        </div>
-                    </div> 
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="text" class="form-control shadow-info" id="apellido" placeholder="Apellido" name="apellido">
-                            <label for="apellido">Apellido</label>
-                        </div>
+            
+            <div class="col-md-7 col-12">
+                <ul>
+                    <li class="mb-3 fs-4"><i class="fab fa-whatsapp fs-3 px-2"></i>+54 9 11 5555-5555</li>
+                    <li class="mb-3 fs-4"><i class="fas fa-envelope fs-3 px-2"></i>9k0wA@example.com</li>
+                    <li class="mb-3 fs-4"><i class="fas fa-map-marker-alt fs-3 px-2"></i> Ugalde 2159, Tandil - Argentina</li>
+                </ul>
+                
+                <p><iframe id="map-canvas" class="map_part" width="450"  height="300"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=Tandil Ugalde 2159&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">Powered by <a href="https://www.googlemapsgenerator.com">html embed google maps</a> and <a href="https://skipboregler.com/">skip bo regler</a></iframe></p>
+            </div>
+                
+
+            <form method="post" class="col-md-9 col-lg-7 col-12 rounded-5 p-sm-5 p-4 fondo col-md-5 col-12">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <div class="form-floating mb-3">
+                        {{ field|add_class:"form-control" }}
+                        {{ field.label_tag }}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
                     </div>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control shadow-info" id="email" placeholder="name@example.com" name="email">
-                    <label for="email">Email</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control shadow-info" id="email" placeholder="Telefono" name="telefono">
-                    <label for="telefono">Telefono</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <textarea class="form-control shadow-info" id="mensaje" placeholder="Mensaje" name="mensaje"></textarea>
-                    <label for="mensaje">Mensaje</label>
-                </div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-outline-info shadow-info">Enviar</button>
+                {% endfor %}
+        
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger mt-3">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="d-grid gap-3 mt-5">
+                    <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
             </form>
         </div>

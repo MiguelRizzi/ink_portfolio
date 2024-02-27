@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Tattoo, Design, Message
 
-# Register your models here.
+admin.site.register(Tattoo)
+admin.site.register(Design)
+admin.site.register(Message)

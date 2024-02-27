@@ -1,9 +1,8 @@
 from django.urls import path
-from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='portfolio/index.html'), name='index'),
+    path('', views.indexView.as_view(), name='index'),
     path('management/', views.PortfolioManagementView.as_view(), name='management'),
     # Tattoos
     path("tattoo/detail/<int:pk>", views.TattooDetail.as_view(), name="tattoo_detail"),
@@ -17,4 +16,10 @@ urlpatterns = [
     path("design/create/", views.DesignCreateView.as_view(), name="design_create"),
     path("design/delete/<int:pk>", views.DesignDelete.as_view(), name="design_delete"),
     path("design/update/<int:pk>", views.DesignUpdate.as_view(), name="design_update"),
+    # Messages
+    path('message/detail/<int:pk>', views.MessageDetail.as_view(), name='message_detail'),
+    path('message/list/', views.MessageList.as_view(), name='message_list'),
+    path('message/delete/<int:pk>', views.MessageDelete.as_view(), name='message_delete'),
+    path('message/update/<int:pk>', views.MessageUpdate.as_view(), name='message_update'),
+
 ]

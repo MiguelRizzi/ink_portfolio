@@ -13,3 +13,21 @@ class DesignForm(forms.ModelForm):
         widgets = {
             "available": forms.CheckboxInput(attrs={"class": "form-check-input"}),
             }
+
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = models.Message
+        fields = ['name', 'email', 'phone', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Nombre'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Correo electrónico'}),
+            'phone': forms.NumberInput(attrs={'placeholder': 'Teléfono'}),
+            'message': forms.Textarea(attrs={'placeholder': 'Mensaje'})
+        }
+        labels = {
+            'name': 'Nombre',
+            'email': 'Correo electrónico',
+            'phone': 'Teléfono',
+            'message': 'Mensaje'
+        }

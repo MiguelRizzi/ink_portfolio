@@ -1,0 +1,40 @@
+{% extends 'components/list.html' %}
+
+{% block title_2 %}Bandeja de Entrada{% endblock %}
+{% block search %}
+{% endblock search %}
+       
+{% block table_header %}
+    <tr>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Leido</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+    </tr>
+{% endblock table_header %}
+     
+{% block table_body %}
+    {% for message in object_list %}
+        <tr>
+            <td>{{ message.name }}</td>
+            <td>{{ message.date }}</td>
+            {% if message.is_read %}
+                <td class="text-success"><i class="fa fa-check"></i></td>
+            {% else %}
+                <td class="text-danger"><i class="fa fa-times"></i></td>
+            {% endif %}
+            <td>
+                <a href="{% url 'portfolio:message_detail' message.id %}" class="btn btn-primary">Detalle</a>
+            </td>
+            <td>
+                <a href="{% url 'portfolio:message_update' message.id %}" class="btn btn-success">Actualizar</a>
+            </td>
+            <td>
+                <a href="{% url 'portfolio:message_delete' message.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock table_body %}

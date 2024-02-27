@@ -9,6 +9,17 @@ from . import models
 from django.contrib import messages
 
 
+class indexView(CreateView):
+    model = models.Message
+    form_class = forms.MessageForm
+    success_url = reverse_lazy("portfolio:index")
+    template_name="portfolio/index.html"
+
+    def form_valid(self, form):
+        messages.success(self.request, "El mensaje se envió correctamente.", extra_tags="alert alert-success")
+        return super().form_valid(form)
+    
+
 
 class PortfolioManagementView(TemplateView, LoginRequiredMixin):
     template_name = "portfolio/management.html"
@@ -102,4 +113,45 @@ class DesignUpdate(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         messages.success(self.request, "El diseño se actualizó correctamente.", extra_tags="alert alert-success")
+        return super().form_valid(form)
+    
+    # Messages
+class MessageDetail(LoginRequiredMixin, DetailView):
+    model = models.Message
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_read = True  
+        self.object.save()
+        return super().get(request, *args, **kwargs)
+
+
+class MessageList(LoginRequiredMixin, ListView):
+    model = models.Message
+
+class MessageDelete(LoginRequiredMixin, DeleteView):
+    model = models.Message
+    success_url = reverse_lazy("portfolio:message_list")
+
+    def get_success_url(self):
+            messages.success(self.request, "El mensaje se eliminó correctamente.", extra_tags="alert alert-danger")
+            return super().get_success_url()
+    
+
+class MessageUpdate(UpdateView):
+    model = models.Message
+    fields = [] 
+    success_url = reverse_lazy('portfolio:message_list')
+
+    def form_valid(self, form):
+        instance = form.instance
+        
+        if instance.is_read:
+            instance.is_read = False
+            messages.success(self.request, "El mensaje se marcó como leído.", extra_tags="alert alert-success")
+        else:
+            instance.is_read = True
+            messages.success(self.request, "El mensaje se marcó como no leído.", extra_tags="alert alert-danger")
+            
+        instance.save()
         return super().form_valid(form)
