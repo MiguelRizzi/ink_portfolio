@@ -8,6 +8,8 @@ from . import forms
 from . import models
 from django.contrib import messages
 
+from reviews.models import Review 
+
 
 class indexView(CreateView):
     model = models.Message
@@ -15,11 +17,17 @@ class indexView(CreateView):
     success_url = reverse_lazy("portfolio:index")
     template_name="portfolio/index.html"
 
+
     def form_valid(self, form):
         messages.success(self.request, "El mensaje se envió correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['review_list'] = Review.objects.all()  
+        return context
 
+    
 
 class PortfolioManagementView(TemplateView, LoginRequiredMixin):
     template_name = "portfolio/management.html"
