@@ -39,24 +39,13 @@
 
     <section id="contacto" class="container-fluid p-md-5 p-2">
         <h2 class="display-4 text-uppercase title-shadow pt-4 fw-bolder">Contacto</h2>
+     
         <div class="row align-items-center justify-content-center mb-5">
-            
-            <div class="col-md-7 col-12">
-                <ul>
-                    <li class="mb-3 fs-4"><i class="fab fa-whatsapp fs-3 px-2"></i>+54 9 11 5555-5555</li>
-                    <li class="mb-3 fs-4"><i class="fas fa-envelope fs-3 px-2"></i>9k0wA@example.com</li>
-                    <li class="mb-3 fs-4"><i class="fas fa-map-marker-alt fs-3 px-2"></i> Ugalde 2159, Tandil - Argentina</li>
-                </ul>
-                
-                <p><iframe id="map-canvas" class="map_part" width="450"  height="300"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=Tandil Ugalde 2159&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">Powered by <a href="https://www.googlemapsgenerator.com">html embed google maps</a> and <a href="https://skipboregler.com/">skip bo regler</a></iframe></p>
-            </div>
-                
-
-            <form method="post" class="col-md-9 col-lg-7 col-12 rounded-5 p-sm-5 p-4 fondo col-md-5 col-12">
+            <form method="post" class="col-md-9 col-lg-7 col-12 p-4 fondo rounded-5 p-5">
                 {% csrf_token %}
                 
                 {% for field in form %}
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-3 mx-md-2 mx-lg-3">
                         {{ field|add_class:"form-control" }}
                         {{ field.label_tag }}
                         {% for error in field.errors %}
@@ -78,6 +67,49 @@
                 </div>
             </form>
         </div>
-        <p class="my-form-status"></p>
+        
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-map-marked-alt fa-2x mb-2"></i>
+                            <h4 class="text-uppercase m-0">Dirección</h4>
+                            <hr class="my-4 mx-auto" />
+                            <a href="https://www.google.com/maps/place/Ugalde+2159,+Tandil,+Provincia+de+Buenos+Aires/@-37.3001473,-59.1262451,17z/data=!3m1!4b1!4m5!3m4!1s0x9591201804b28063:0x884ad7fac9b10c79!8m2!3d-37.3001473!4d-59.1262451?entry=ttu" target="_blank">
+                                Ugalde 2159 - Tandil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-envelope fa-2x mb-2"></i>
+                            <h4 class="text-uppercase m-0">Email</h4>
+                            <hr class="my-4 mx-auto" />
+                            <a href="mailto:nobodies.tattootandil@gmail.com" target="_blank">
+                                nobodies.tattootandil@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="fab fa-whatsapp fa-2x mb-2"></i>
+                            <h4 class="text-uppercase m-0">Whatsapp</h4>
+                            <hr class="my-4 mx-auto" />
+                            <a href="https://wa.me/542494271876" target="_blank">
+                                +54 9 2494 271876
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <div><iframe id="map-canvas" class="map_part" width="100%"  height="300"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=Tandil Ugalde 2159&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">Powered by <a href="https://www.googlemapsgenerator.com">html embed google maps</a> and <a href="https://skipboregler.com/">skip bo regler</a></iframe></div>
+    
 {% endblock content %}
