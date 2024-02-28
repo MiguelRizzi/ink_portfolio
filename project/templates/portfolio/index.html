@@ -2,6 +2,11 @@
 {% load static %}
 {% load widget_tweaks %}
 
+{% block styles %}
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+{% endblock styles %}
+
 {% block header %}
     <header id="inicio">
         <div class="fondo-header">
@@ -38,7 +43,30 @@
     </section>
 
     <section id="contacto" class="container-fluid p-md-5 p-2">
-        {% include 'components/carrousel_reviews.html' %}
+        <h2 class="display-4 text-uppercase title-shadow fw-bolder">Nuestros clientes</h2>
+
+        <div class="slide-container swiper w-100 px-4 fondo rounded-5 p-5">
+            <div class="slide-content overflow-hidden">
+                <div class="card-wrapper swiper-wrapper">
+                
+                    {% for review in review_list %}
+                        <div class="card swiper-slide">
+                            <div class="card-content px-2">
+                                <p>{{ review.name }}</p>
+                                <p class="p-valoracion">Valoracion: {% for i in "x"|ljust:review.rating %}⭐{% endfor %}</p>
+                                <p>{{ review.review|truncatechars:80 }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+        
+                </div>
+            </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <a href="{% url 'reviews:review_create' %}" class="lead">Deja tu comentario aquí!!!✨</a>
     </section>
     
     <section id="contacto" class="container-fluid p-md-5 p-2">
@@ -117,3 +145,41 @@
     <div><iframe id="map-canvas" class="map_part" width="100%"  height="300"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=Tandil Ugalde 2159&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">Powered by <a href="https://www.googlemapsgenerator.com">html embed google maps</a> and <a href="https://skipboregler.com/">skip bo regler</a></iframe></div>
     
 {% endblock content %}
+
+{% block scripts %}
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".slide-content", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: 'true',
+            fade:'true',
+            grabCursor: 'true',
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dinamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+    
+            breakpoints:{
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                }
+    
+            }
+        });
+    </script>
+{% endblock scripts %}

@@ -1,9 +1,16 @@
 {% extends 'components/list.html' %}
 
 {% block title_2 %}Listado de reseñas{% endblock %}
+
 {% block search %}
+    <!-- Sirve para buscar reseñas. Se pasa a la variable consult de la vista. -->
+    <div class="py-lg-4">
+        <form action="{% url 'reviews:review_list' %}" method="get">
+            <input name="consult" type="text" placeholder="Buscar...">
+        </form>
+    </div>
 {% endblock search %}
-       
+
 {% block table_header %}
     <tr>
         <th>Nombre</th>

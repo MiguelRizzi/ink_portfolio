@@ -24,7 +24,7 @@ class indexView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['review_list'] = Review.objects.all()  
+        context['review_list'] = Review.objects.filter(aproved=True)  
         return context
 
     
@@ -154,10 +154,10 @@ class MessageUpdate(UpdateView):
         
         if instance.is_read:
             instance.is_read = False
-            messages.success(self.request, "El mensaje se marcó como leído.", extra_tags="alert alert-success")
+            messages.success(self.request, "El mensaje se marcó no como leído.", extra_tags="alert alert-danger")
         else:
             instance.is_read = True
-            messages.success(self.request, "El mensaje se marcó como no leído.", extra_tags="alert alert-danger")
+            messages.success(self.request, "El mensaje se marcó como leído.", extra_tags="alert alert-success")
             
         instance.save()
         return super().form_valid(form)

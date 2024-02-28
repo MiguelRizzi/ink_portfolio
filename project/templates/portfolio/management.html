@@ -3,26 +3,22 @@
 
 {% block content %}
     <section class="container-fluid p-md-5 p-2">
-        <h2 class="display-5 mb-4 mt-5">Administración</h2>
+        <h2 class="display-5 mb-4 mt-5 fw-bolder text-uppercase">Administración</h2>
 
         <div class="d-flex justify-content-center align-items-center">
             <div class="col-md-9 col-lg-7 col-12 p-sm-5 p-4 fondo rounded-5">
                 <div>
-                    <h2 class="fw-bolder display-5 my-4 revelar text-uppercase">Tatuajes</h3>
-                    <div class="d-grid gap-3 revelar izquierda">
+                    <h2 class="fw-bolder display-5 my-4 text-uppercase">Tatuajes</h3>
+                    <div class="d-grid gap-3">
                         <a href="{% url 'portfolio:tattoo_create' %}" class="btn btn-success">Agregar </a>
                         <a href="{% url 'portfolio:tattoo_list' %}" class="btn btn-success">Ver todos</a> <br>
                     </div>
                         
-                    <h2 class="fw-bolder display-5 mb-4 revelar text-uppercase">Diseños</h3>
-                    <div class="d-grid gap-3 revelar derecha">
+                    <h2 class="fw-bolder display-5 mb-4 text-uppercase">Diseños</h3>
+                    <div class="d-grid gap-3">
                         <a href="{% url 'portfolio:design_create' %}" class="btn btn-success">Agregar</a>
                         <a href="{% url 'portfolio:design_list' %}" class="btn btn-success">Ver todos</a> <br>
                     </div>
-                    <h2 class="fw-bolder display-5 mb-4 revelar text-uppercase">Reseñas</h3>
-                        <div class="d-grid gap-3 revelar derecha">
-                            <a href="{% url 'reviews:review_list' %}" class="btn btn-success">Ver todas</a> <br>
-                        </div>
                 </div>
                 {% url 'portfolio:index' as url %}
                 {% include 'components/index_back.html' with link=url %}
