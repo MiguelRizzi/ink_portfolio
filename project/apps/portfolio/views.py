@@ -37,12 +37,12 @@ class PortfolioManagementView(TemplateView, LoginRequiredMixin):
 
 # Tattoo
     
-class TattooDetail(LoginRequiredMixin, DetailView):
+class TattooDetailView(LoginRequiredMixin, DetailView):
     model = models.Tattoo
 
     
 
-class TattooList(LoginRequiredMixin, ListView):
+class TattooListView(LoginRequiredMixin, ListView):
     model = models.Tattoo
     def get_queryset(self):
         if self.request.GET.get("consult"):
@@ -61,7 +61,7 @@ class TattooCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, "El tatuaje se guardó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
  
-class TattooDelete(LoginRequiredMixin, DeleteView):
+class TattooDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Tattoo
     success_url = reverse_lazy("portfolio:tattoo_list")
 
@@ -70,7 +70,7 @@ class TattooDelete(LoginRequiredMixin, DeleteView):
             return super().get_success_url()
     
 
-class TattooUpdate(LoginRequiredMixin, UpdateView):
+class TattooUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Tattoo
     success_url = reverse_lazy("portfolio:tattoo_list")
     form_class = forms.TattooForm
@@ -82,11 +82,11 @@ class TattooUpdate(LoginRequiredMixin, UpdateView):
 
  # Designs
     
-class DesignDetail(LoginRequiredMixin, DetailView):
+class DesignDetailView(LoginRequiredMixin, DetailView):
     model = models.Design
 
 
-class DesignList(LoginRequiredMixin, ListView):
+class DesignListView(LoginRequiredMixin, ListView):
     model = models.Design
     def get_queryset(self):
         if self.request.GET.get("consult"):
@@ -105,7 +105,7 @@ class DesignCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, "El diseño se guardó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
  
-class DesignDelete(LoginRequiredMixin, DeleteView):
+class DesignDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Design
     success_url = reverse_lazy("portfolio:design_list")
 
@@ -114,7 +114,7 @@ class DesignDelete(LoginRequiredMixin, DeleteView):
             return super().get_success_url()
     
 
-class DesignUpdate(LoginRequiredMixin, UpdateView):
+class DesignUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Design
     success_url = reverse_lazy("portfolio:design_list")
     form_class = forms.DesignForm
@@ -124,7 +124,7 @@ class DesignUpdate(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
     
     # Messages
-class MessageDetail(LoginRequiredMixin, DetailView):
+class MessageDetailView(LoginRequiredMixin, DetailView):
     model = models.Message
 
     def get(self, request, *args, **kwargs):
@@ -134,10 +134,10 @@ class MessageDetail(LoginRequiredMixin, DetailView):
         return super().get(request, *args, **kwargs)
 
 
-class MessageList(LoginRequiredMixin, ListView):
+class MessageListView(LoginRequiredMixin, ListView):
     model = models.Message
 
-class MessageDelete(LoginRequiredMixin, DeleteView):
+class MessageDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Message
     success_url = reverse_lazy("portfolio:message_list")
 
@@ -146,7 +146,7 @@ class MessageDelete(LoginRequiredMixin, DeleteView):
             return super().get_success_url()
     
 
-class MessageUpdate(UpdateView):
+class MessageUpdateView(UpdateView):
     model = models.Message
     fields = [] 
     success_url = reverse_lazy('portfolio:message_list')
