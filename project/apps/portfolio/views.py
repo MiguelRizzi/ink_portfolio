@@ -25,6 +25,8 @@ class indexView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['review_list'] = Review.objects.filter(aproved=True)  
+        context['tattoo_list'] = models.Tattoo.objects.all()
+        context['design_list'] = models.Design.objects.all()
         return context
 
     

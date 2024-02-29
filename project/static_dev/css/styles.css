@@ -29,7 +29,7 @@ a, .button-logout{
 }
 
 header{
-    background-image: url("../assets/fondo.webp");
+    object-fit: contain;
     background-size: cover;
     height:95vh;
 }

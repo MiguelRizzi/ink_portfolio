@@ -3,12 +3,14 @@
 {% load widget_tweaks %}
 
 {% block styles %}
-    <!-- Swiper -->
+    <!-- Swiper JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Sliders -->
+    <link rel="stylesheet" href="{% static 'css/swiper-sliders.css' %}">
 {% endblock styles %}
 
 {% block header %}
-    <header id="inicio">
+    <header id="inicio" class="object-fit-contain" style="background-image:url({% static 'img/fondo.jpeg' %});">
         <div class="fondo-header">
             <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
                 <div class="col-lg-8 ">
@@ -34,39 +36,92 @@
                     <p class="lead p-sobre-mi pb-2">
                         ¡Hola! Soy Ayelén, una tatuadora apasionada con 9 años de experiencia en la hermosa ciudad de Tandil. Me especializo en los estilos de tatuaje neotradicional y anime, creando diseños personalizados para que obtengas una pieza única. ¿Estás listo para tatuarte conmigo? ¡Contáctame y juntos crearemos un tatuaje que te acompañará toda la vida. ¡Hagamos magia en la piel! ✨🖤
                     </p>
+                    <a type="button" href="https://wa.me/542494271876" class="btn btn-outline-success btn-lg px-5" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Whatsapp
+                    </a>                   
                 </div>
             </div>
             <div class="col-md-5 col-12 rounded border-dark mb-5 mb-md-0 div-foto p-sm-0 p-4">
                 <img class="w-90 w-md-100 img-thumbnail foto shadow-secondary" src="{% static 'img/tatuando.jpg' %}" alt="Foto Tatuando">
             </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="container-fluid p-md-5 p-2">
-        <h2 class="display-4 text-uppercase title-shadow fw-bolder">Nuestros clientes</h2>
-
-        <div class="slide-container swiper w-100 px-4 fondo rounded-5 p-5">
-            <div class="slide-content overflow-hidden">
-                <div class="card-wrapper swiper-wrapper">
-                
-                    {% for review in review_list %}
-                        <div class="card swiper-slide">
-                            <div class="card-content px-2">
-                                <p>{{ review.name }}</p>
-                                <p class="p-valoracion">Valoracion: {% for i in "x"|ljust:review.rating %}⭐{% endfor %}</p>
-                                <p>{{ review.review|truncatechars:80 }}</p>
-                            </div>
+            <div class="container px-4 py-5" id="featured-3">
+                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                    <div class="feature col">
+                        <div class="feature-icon">
+                            <i class="fas fa-fire fa-3x"></i> <!-- Icono de fuego para representar tatuajes -->
                         </div>
-                    {% endfor %}
-        
+                        <h2>Tatuajes</h2>
+                        <p>Diseños únicos y creativos para expresar tu personalidad a través del arte en la piel.</p>
+                    </div>
+                    <div class="feature col">
+                        <div class="feature-icon">
+                            <i class="fas fa-paint-brush fa-3x"></i> <!-- Icono de pincel para representar diseños personalizados -->
+                        </div>
+                        <h2>Diseños personalizados</h2>
+                        <p>Trabajos a medida que reflejen tu estilo y gusto personal, creando piezas únicas para ti.</p>
+                    </div>
+                    <div class="feature col">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo fa-3x"></i> <!-- Icono de flecha circular para representar cover ups -->
+                        </div>
+                        <h2>Cover Ups</h2>
+                        <p>Soluciones creativas para cubrir tatuajes antiguos o no deseados con diseños nuevos y frescos.</p>
+                    </div>
                 </div>
             </div>
-            <div class="swiper-button-next swiper-navBtn"></div>
-            <div class="swiper-button-prev swiper-navBtn"></div>
-            <div class="swiper-pagination"></div>
+            <div class="">
+                <h3 class="display-4 text-uppercase title-shadow fw-bolder">Comentarios</h2>
+                <div class="slide-container swiper w-100">
+                    <div class="slide-content review overflow-hidden">
+                        <div class="card-wrapper swiper-wrapper">
+                           
+                            {% for review in review_list %}
+                                <div class="card swiper-slide">
+                                    <div class="card-content p-3" style="height: 180px;">
+                                        <p class="p-valoracion">{% for i in "x"|ljust:review.rating %}⭐{% endfor %}</p>
+                                        <p class="fw-bold">{{ review.name }}</p>
+                                        <p>{{ review.review|truncatechars:80 }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                 
+                        </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <a href="{% url 'reviews:review_create' %}" class="btn btn-outline-info px-5 mt-3">Deja tu comentario aquí!!!✨</a>
+            </div>
         </div>
-
-        <a href="{% url 'reviews:review_create' %}" class="lead">Deja tu comentario aquí!!!✨</a>
+    </section>
+    <section id="galeria" class="container-fluid p-md-5 p-2">
+        <h2 class="display-4 text-uppercase title-shadow fw-bolder">Galerias</h2>
+        <div class="row align-items-center justify-content-center pt-4"> 
+            <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12">
+                <div class="swiper-wrapper swiper-wrapper-gallery">
+                    {% for tattoo in tattoo_list %}
+                    <div class="swiper-slide swiper-slide-gallery">
+                        <h3>TATUAJES</h3>
+                        <div class="square"><div></div></div>
+                        <img  class="img-gallery-index" src="{{ tattoo.image.url }}" alt="{{tattoo.titte}}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="swiper-container swiper-container-gallery slider2 col-md-6 col-12">
+                <div class="swiper-wrapper swiper-wrapper-gallery">
+                    {% for design in design_list %}
+                    <div class="swiper-slide swiper-slide-gallery">
+                            <h3>DISEÑOS</h3>
+                            <div class="square"><div></div class="square2"></div>
+                            <img class="img-gallery-index" src="{{ design.image.url }}" alt="{{design.titte}}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </section>
     
     <section id="contacto" class="container-fluid p-md-5 p-2">
@@ -147,39 +202,9 @@
 {% endblock content %}
 
 {% block scripts %}
-    <!-- Swiper -->
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <script>
-        var swiper = new Swiper(".slide-content", {
-            slidesPerView: 3,
-            spaceBetween: 25,
-            loop: true,
-            centerSlide: 'true',
-            fade:'true',
-            grabCursor: 'true',
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-                dinamicBullets: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-    
-            breakpoints:{
-                0: {
-                    slidesPerView: 1,
-                },
-                520: {
-                    slidesPerView: 2,
-                },
-                950: {
-                    slidesPerView: 3,
-                }
-    
-            }
-        });
-    </script>
+    <!-- Sliders -->
+    <script src="{% static 'js/script-sliders.js' %}"></script>
 {% endblock scripts %}
+
