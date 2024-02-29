@@ -42,3 +42,8 @@
         </tr>
     {% endfor %}
 {% endblock table_body %}
+
+{% block pagination %}
+    {% url 'portfolio:management' as url %}
+    {% include 'components/index_back.html' with link=url %}    
+{% endblock pagination %}
