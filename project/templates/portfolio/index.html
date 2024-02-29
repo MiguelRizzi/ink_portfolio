@@ -95,35 +95,43 @@
             </div>
         </div>
     </section>
+
+    <!-- Galeria -->
     <section id="galeria" class="container-fluid p-md-5 p-2">
         <h2 class="display-4 text-uppercase title-shadow fw-bolder">Galerias</h2>
         <div class="row align-items-center justify-content-center pt-4"> 
+
             <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12">
-                <div class="swiper-wrapper swiper-wrapper-gallery">
-                    {% for tattoo in tattoo_list %}
-                    <div class="swiper-slide swiper-slide-gallery">
-                        <h3>TATUAJES</h3>
-                        <div class="square"><div></div></div>
-                        <img  class="img-gallery-index" src="{{ tattoo.image.url }}" alt="{{tattoo.titte}}">
+                <a href="{% url 'portfolio:tattoo_gallery' %}">
+                    <div class="swiper-wrapper swiper-wrapper-gallery">
+                        {% for tattoo in tattoo_list %}
+                        <div class="swiper-slide swiper-slide-gallery">
+                            <h3>TATUAJES</h3>
+                            <div class="square"><div></div></div>
+                            <img  class="img-gallery-index" src="{{ tattoo.image.url }}" alt="{{tattoo.titte}}">
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
+                </a>
             </div>
             
             <div class="swiper-container swiper-container-gallery slider2 col-md-6 col-12">
-                <div class="swiper-wrapper swiper-wrapper-gallery">
-                    {% for design in design_list %}
-                    <div class="swiper-slide swiper-slide-gallery">
-                            <h3>DISEÑOS</h3>
-                            <div class="square"><div></div class="square2"></div>
-                            <img class="img-gallery-index" src="{{ design.image.url }}" alt="{{design.titte}}">
+                <a href="{% url 'portfolio:design_gallery' %}">
+                    <div class="swiper-wrapper swiper-wrapper-gallery">
+                        {% for design in design_list %}
+                        <div class="swiper-slide swiper-slide-gallery">
+                                <h3>DISEÑOS</h3>
+                                <div class="square"><div></div class="square2"></div>
+                                <img class="img-gallery-index" src="{{ design.image.url }}" alt="{{design.titte}}">
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
+                </a>
             </div>
         </div>
     </section>
     
+    <!-- Contacto -->
     <section id="contacto" class="container-fluid p-md-5 p-2">
         <h2 class="display-4 text-uppercase title-shadow pt-4 fw-bolder">Contacto</h2>
      

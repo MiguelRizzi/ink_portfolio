@@ -163,3 +163,16 @@ class MessageUpdate(UpdateView):
             
         instance.save()
         return super().form_valid(form)
+
+    
+
+    # Galleries
+class TattooGalleryListView(ListView):
+    model = models.Tattoo
+    template_name= 'portfolio/tattoo_gallery.html'
+
+
+        
+class DesignGalleryListView(ListView):
+    model = models.Design
+    template_name= 'portfolio/design_gallery.html'

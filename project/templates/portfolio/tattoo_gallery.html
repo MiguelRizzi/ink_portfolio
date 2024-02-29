@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section id="sobre-mi" class="container-fluid p-md-5 p-2">
+        <h1 class="display-4 text-uppercase title-shadow fw-bolder pt-5">NOBODIES TATTOO</h2>
+
+        <div class="d-flex flex-wrap gap-3 justify-content-center rounded-5 p-sm-5 p-4 mb-5 mb-md-0 fondo">
+            {% for image in object_list %}
+                <div class="">
+                    <img src="{{ image.image.url}}" alt="{{ image.title}}" style="width: 300px;">
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="d-grid gap-3 mt-4">
+            <a href="{% url 'portfolio:design_gallery' %}" class="btn btn-dark"> Ir a Diseños</a>
+        </div>
+        {% url 'portfolio:index' as url %}
+        {% include 'components/index_back.html' with link=url %}
+    </section>
+
+    
+{% endblock content %}
