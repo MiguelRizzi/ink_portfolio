@@ -39,13 +39,19 @@
             {% endif %}
        
             <td>
-                <a href="{% url 'reviews:review_detail' review.id %}" class="btn btn-primary">Detalle</a>
+                <a href="{% url 'reviews:review_detail' review.id %}" class="btn btn-primary">
+                    <i class="fas fa-info-circle"></i> Leer
+                </a>
             </td>
             <td>
-                <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-success">Aprobar</a>
+                <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-success">
+                    <i class="fas fa-edit"></i> Aprobar
+                </a>
             </td>
             <td>
-                <a href="{% url 'reviews:review_delete' review.id %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'reviews:review_delete' review.id %}" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Eliminar
+                </a>
             </td>
         </tr>
     {% endfor %}

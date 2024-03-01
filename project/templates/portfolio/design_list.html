@@ -37,13 +37,19 @@
                 <td class="text-danger"><i class="fa fa-times"></i></td>
             {% endif %}
             <td>
-                <a href="{% url 'portfolio:design_detail' design.id %}" class="btn btn-primary">Detalle</a>
+                <a href="{% url 'portfolio:design_detail' design.id %}" class="btn btn-primary">
+                    <i class="fas fa-info-circle"></i> Detalle
+                </a>
             </td>
             <td>
-                <a href="{% url 'portfolio:design_update' design.id %}" class="btn btn-success">Actualizar</a>
+                <a href="{% url 'portfolio:design_update' design.id %}" class="btn btn-success">
+                    <i class="fas fa-edit"></i> Actualizar
+                </a>
             </td>
             <td>
-                <a href="{% url 'portfolio:design_delete' design.id %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'portfolio:design_delete' design.id %}" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Eliminar
+                </a>
             </td>
         </tr>
     {% endfor %}

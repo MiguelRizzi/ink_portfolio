@@ -3,7 +3,7 @@ from django.db import models
 
 class Tattoo(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='img/tattoos')
 
     def __str__(self):
@@ -11,7 +11,7 @@ class Tattoo(models.Model):
 
 class Design(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='img/designs')
     available = models.BooleanField(default=True)
 

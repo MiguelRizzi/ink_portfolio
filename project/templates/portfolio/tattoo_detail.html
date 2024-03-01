@@ -16,7 +16,14 @@
                         <li class="list-group-item"><strong>Foto:</strong> Sin foto</li>
                     {% endif %}
                     <li class="list-group-item"><strong>Titulo:</strong> {{ object.title }}</li>
-                    <li class="list-group-item"><strong>Descripcion:</strong> {{ object.descripcion }}</li>
+                    <li class="list-group-item"><strong>Descripcion:</strong> 
+                        {% if object.description %}
+                            {{ object.description }}
+                        {% else %}
+                            Sin descripción 
+                        {% endif %}
+                    </li>
+                    
                 </ul>
                 {% url 'portfolio:tattoo_list' as url %}
                 {% include 'components/index_back.html' with link=url %}
