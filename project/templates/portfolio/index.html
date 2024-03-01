@@ -10,7 +10,7 @@
 {% endblock styles %}
 
 {% block header %}
-    <header id="inicio" class="object-fit-md-cover" style="background-image:url({% static 'img/fondo3.jpeg' %});">
+    <header id="inicio" class="object-fit-md-cover" style="background-image:url({% static 'img/fondo.jpeg' %});">
         <div class="fondo-header">
             <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
                 <div class="col-lg-8 ">
@@ -106,8 +106,8 @@
                     {% for tattoo in tattoo_list %}
                     <div class="swiper-slide swiper-slide-gallery">
                         <a href="{% url 'portfolio:tattoo_gallery' %}">
-                            <h3>TATUAJES</h3>
-                            <div class="square">
+                            <h3 id="h3-slider-tattoos">TATUAJES</h3>
+                            <div id="square-tattoos" class="square">
                                 <div></div>
                             </div>
                             <img  class="img-gallery-index" src="{{ tattoo.image.url }}" alt="{{tattoo.titte}}">
@@ -122,9 +122,9 @@
                     {% for design in design_list %}
                     <div class="swiper-slide swiper-slide-gallery">
                         <a href="{% url 'portfolio:design_gallery' %}">
-                            <h3>DISEÑOS</h3>
-                            <div class="square">
-                                <div></div class="square2">
+                            <h3 id="h3-slider-designs">DISEÑOS</h3>
+                            <div id="square-designs" class="square">
+                                <div></div>
                             </div>
                             <img class="img-gallery-index" src="{{ design.image.url }}" alt="{{design.titte}}">
                         </a>
