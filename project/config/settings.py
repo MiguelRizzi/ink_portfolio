@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'portfolio.apps.PortfolioConfig',
     'reviews.apps.ReviewsConfig',
+    'blog.apps.BlogConfig',
     # 3rd party apps
     'widget_tweaks',
 ]

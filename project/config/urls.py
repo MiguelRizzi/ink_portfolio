@@ -6,9 +6,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include(('users.urls', 'users'))),
     path('', include(('portfolio.urls', 'portfolio'))),
+    path('users/', include(('users.urls', 'users'))),
     path('reviews/', include(('reviews.urls', 'reviews'))),
+    path('blog/', include(('blog.urls', 'blog'))),
+
 ]
 
 if settings.DEBUG:
