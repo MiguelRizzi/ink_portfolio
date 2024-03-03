@@ -91,11 +91,22 @@ textarea{
     resize: none !important;
 }
 
-section, footer{
+footer{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.section-dark{
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 40%, rgba(8, 8, 8, 0.8) 100%);
     box-shadow: 0 0 6px rgb(56, 56, 56);
 }
-.fondo{
+.section-light{
+    background-image: linear-gradient(180deg, rgba(245, 245, 245, 0.8) 40%, rgba(150, 150, 150, 0.8) 100%);
+    box-shadow: 0 0 6px rgb(56, 56, 56);
+}
+.fondo-dark{
     background-image: linear-gradient(180deg, rgba(17, 17, 17, 0.8) 40%, rgba(0, 0, 0, 0.8) 100%);
     box-shadow: 0 0 60px rgb(0, 0, 0);
+}
+
+.fondo-light{
+    background-image: linear-gradient(180deg, rgba(150, 150, 150, 0.8) 40%, rgba(245, 245, 245, 0.8) 100%);
 }
