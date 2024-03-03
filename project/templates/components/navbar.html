@@ -8,60 +8,76 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav text-uppercase fs-5 fw-bolder title-shadow">
                 <li class="nav-item scale">
-                    <a class="nav-link" href="#inicio">Inicio</a>
+                    <a class="nav-link" href="
+                        {% if request.path == '/' %}
+                            #inicio
+                        {% else %}
+                            {% url 'portfolio:index' %}#inicio
+                        {% endif %}
+                    ">Inicio</a>
                 </li>
                 <li class="nav-item scale">
-                    <a class="nav-link" href="#sobre-mi">Sobre mi</a>
+                    <a class="nav-link" href="
+                        {% if request.path == '/' %}
+                            #galeria
+                        {% else %}
+                            {% url 'portfolio:index' %}#galeria
+                        {% endif %}
+                    ">Galeria</a>
                 </li>
                 <li class="nav-item scale">
-                    <a class="nav-link" href="#galeria">Galeria</a>
+                    <a class="nav-link" href="
+                        {% if request.path == '/' %}
+                            #contacto
+                        {% else %}
+                            {% url 'portfolio:index' %}#contacto
+                        {% endif %}
+                    ">Contacto</a>
                 </li>
                 <li class="nav-item scale">
-                    <a class="nav-link" href="#blog">Blog</a>
+                    <a class="nav-link" href="{% url 'blog:post_list' %}#blog">Blog</a>
                 </li>
-                <li class="nav-item scale">
-                    <a class="nav-link" href="#contacto">Contacto</a>
-                </li>
+                
                 {% if request.user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-success" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ user.username }}
-                        {% if user.avatar.image %}
-                            <img src="{{ user.avatar.image.url }}" class="icon-avatar" alt="Avatar" >
-                        {% else %}
-                            <img src="{% static 'img/avatar-default.png' %}" class="icon-avatar" alt="Avatar">
-                        {% endif %}
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'portfolio:message_list' %}">
-                            Mensajes
-                            {% if request.unread_messages_count > 0 %}
-                                <span class="text-warning p-2"><i class="fas fa-exclamation"></i></span><span>({{ request.unread_messages_count }} no leidos)</span>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-success" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ user.username }}
+                            {% if user.avatar.image %}
+                                <img src="{{ user.avatar.image.url }}" class="icon-avatar" alt="Avatar" >
+                            {% else %}
+                                <img src="{% static 'img/avatar-default.png' %}" class="icon-avatar" alt="Avatar">
                             {% endif %}
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'reviews:review_list' %}">Reseñas</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'portfolio:management' %}">Tatuajes / Diseños</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        {% if not user.avatar %}
-                        <li><a class="dropdown-item" href="{% url 'users:avatar_create' %}">Cargar avatar</a></li>
-                        {% else %}
-                        <li><a class="dropdown-item" href="{% url 'users:avatar_detail' user.avatar.pk %}">Ver Avatar</a></li>
-                        <li><a class="dropdown-item" href="{% url 'users:avatar_update' user.avatar.pk %}">Actualizar Avatar</a></li>
-                        <li><a class="dropdown-item" href="{% url 'users:avatar_delete' user.avatar.pk %}">Eliminar Avatar</a></li>
-                        {% endif %}
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'users:change_password' %}">Cambiar contraseña</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <form action="{% url 'users:logout' %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="dropdown-item button-logout text-uppercase title-shadow">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'portfolio:message_list' %}">
+                                Mensajes
+                                {% if request.unread_messages_count > 0 %}
+                                    <span class="text-warning p-2"><i class="fas fa-exclamation"></i></span><span>({{ request.unread_messages_count }} no leidos)</span>
+                                {% endif %}
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'reviews:review_list' %}">Reseñas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'portfolio:management' %}">Tatuajes / Diseños</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            {% if not user.avatar %}
+                            <li><a class="dropdown-item" href="{% url 'users:avatar_create' %}">Cargar avatar</a></li>
+                            {% else %}
+                            <li><a class="dropdown-item" href="{% url 'users:avatar_detail' user.avatar.pk %}">Ver Avatar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'users:avatar_update' user.avatar.pk %}">Actualizar Avatar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'users:avatar_delete' user.avatar.pk %}">Eliminar Avatar</a></li>
+                            {% endif %}
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'users:change_password' %}">Cambiar contraseña</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form action="{% url 'users:logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item button-logout text-uppercase title-shadow">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
                 {% endif %}
             </ul>
         </div>
