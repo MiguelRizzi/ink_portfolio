@@ -1,10 +1,13 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic import DetailView, ListView
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect
+from django.views import View
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.views.generic import DetailView, ListView
+from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from . import forms
 from . import models
-from django.contrib import messages
 
 
 class ReviewDetailView(LoginRequiredMixin, DetailView):
@@ -31,30 +34,21 @@ class ReviewCreateView(CreateView):
         messages.success(self.request, "La reseña se guardó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     
-class ReviewDeleteView(LoginRequiredMixin, DeleteView):
-    model = models.Review
-    success_url = reverse_lazy("reviews:review_list")
-
-    def get_success_url(self):
-            messages.success(self.request, "La reseña se eliminó correctamente.", extra_tags="alert alert-danger")
-            return super().get_success_url()
-    
-
-class ReviewUpdateView(LoginRequiredMixin, UpdateView):
-    model = models.Review
-    fields = [] 
-    success_url = reverse_lazy('reviews:review_list')
-    template_name = "reviews/review_update.html"
-
-    def form_valid(self, form):
-        instance = form.instance
-        
-        if instance.aproved:
-            instance.aproved = False
-            messages.success(self.request, "La reseña se marcó no como aprobada.", extra_tags="alert alert-danger")
+class ReviewUpdateView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        review = get_object_or_404(models.Review, pk=pk)
+        if review.aproved:
+            review.aproved = False
+            messages.success(request, "La reseña se marcó no como aprobada.", extra_tags="alert alert-danger")
         else:
-            instance.aproved = True
-            messages.success(self.request, "La reseña se marcó como aprobada.", extra_tags="alert alert-success")
-            
-        instance.save()
-        return super().form_valid(form)
+            review.aproved = True
+            messages.success(request, "La reseña se marcó como aprobada.", extra_tags="alert alert-success")
+        review.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+class ReviewDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        review = get_object_or_404(models.Review, pk=pk)
+        review.delete()
+        messages.success(request, "La reseña se eliminó correctamente.", extra_tags="alert alert-success")
+        return redirect('reviews:review_list')
