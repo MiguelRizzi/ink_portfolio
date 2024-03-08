@@ -35,34 +35,34 @@
             </div>
         </div>
     </section>        
-    
-<!-- Modal confirm update -->
-<div class="modal" id="confirmUpdateModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmUpdateModalLabel">Confirmar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                {% if review.aproved %}
-                    ¿Confirmas marcar como NO APROBADO?
-                {% else %}
-                    ¿Confirmas marcar como APROBADO?
-                {% endif %}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                {% if review.aproved %}
-                    <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-danger">Aceptar</a>
-                {% else %}
-                    <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-success">Aceptar</a>
-                {% endif %}
+        
+    <!-- Modal confirm update -->
+    <div class="modal" id="confirmUpdateModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmUpdateModalLabel">Confirmar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if review.aproved %}
+                        ¿Confirmas marcar como NO APROBADO?
+                    {% else %}
+                        ¿Confirmas marcar como APROBADO?
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    {% if review.aproved %}
+                        <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-danger">Aceptar</a>
+                    {% else %}
+                        <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-success">Aceptar</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-</div>
-    
+        
     
     <!-- Modal confirm delete -->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">

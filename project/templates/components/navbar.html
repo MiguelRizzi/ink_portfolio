@@ -61,11 +61,9 @@
                             <li><a class="dropdown-item" href="{% url 'portfolio:management' %}">Tatuajes / Diseños</a></li>
                             <li><hr class="dropdown-divider"></li>
                             {% if not user.avatar %}
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_create' %}">Cargar avatar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'users:avatar_create' %}">Mi avatar</a></li>
                             {% else %}
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_detail' user.avatar.pk %}">Ver Avatar</a></li>
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_update' user.avatar.pk %}">Actualizar Avatar</a></li>
-                            <li><a class="dropdown-item" href="{% url 'users:avatar_delete' user.avatar.pk %}">Eliminar Avatar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'users:avatar_detail' user.avatar.pk %}">Mi avatar</a></li>
                             {% endif %}
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'users:change_password' %}">Cambiar contraseña</a></li>
