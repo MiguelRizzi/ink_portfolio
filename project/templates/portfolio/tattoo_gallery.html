@@ -3,6 +3,11 @@
 {% block content %}
     <section id="galeria" class="container-fluid p-md-5 p-2">
         <h1 class="display-4 text-uppercase title-shadow fw-bolder pt-5">NOBODIES TATTOO</h2>
+        
+        {% if request.user.is_authenticated %}
+            {% include 'components/messages.html' %}
+        {% endif %}    
+        
 
         <div class="d-flex flex-wrap gap-3 justify-content-center rounded-5 p-sm-5 p-4 mb-5 mb-md-0 fondo">
             {% for image in object_list %}

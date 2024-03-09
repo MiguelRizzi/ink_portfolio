@@ -1,10 +1,12 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views import View
 from django.views.generic import DetailView, ListView
+from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from . import forms
 from . import models
-from django.contrib import messages
 
 
 class PostDetailView(DetailView):
@@ -30,15 +32,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         messages.success(self.request, "El post se guardó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
- 
-class PostDeleteView(LoginRequiredMixin, DeleteView):
-    model = models.Post
-    success_url = reverse_lazy("blog:post_list")
-
-    def get_success_url(self):
-            messages.success(self.request, "El post se eliminó correctamente.", extra_tags="alert alert-danger")
-            return super().get_success_url()
-    
+  
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Post
@@ -49,3 +43,11 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, "El post se actualizó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
  
+    
+class PostDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        design = get_object_or_404(models.Post, pk=pk)
+        design.delete()
+        messages.success(request, "La publicacion se eliminó correctamente.", extra_tags="alert alert-danger")
+        return redirect('blog:post_list') 
+    

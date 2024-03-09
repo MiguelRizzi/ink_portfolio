@@ -3,6 +3,8 @@
 {% block content %}
     <section class="container-fluid p-md-5 p-2">
         <h2 class="fw-bolder display-5 mb-4 mt-5 text-uppercase">Tatuaje</h2>
+        
+        {% include 'components/messages.html' %}
 
         <div class="d-flex justify-content-center align-items-center">
             <div class="col-md-9 col-lg-7 col-12 rounded-5 p-sm-5 p-4 fondo">
@@ -23,11 +25,37 @@
                             Sin descripción 
                         {% endif %}
                     </li>
-                    
+                    <li class="list-group-item">
+                        <a href="{% url 'portfolio:tattoo_update' object.id %}" class="btn btn-success">
+                            <i class="fas fa-edit"></i> 
+                        </a>
+                        <a href="{% url 'portfolio:tattoo_delete' object.id %}" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal{{ object.id }}">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </li>
                 </ul>
                 {% url 'portfolio:tattoo_list' as url %}
                 {% include 'components/index_back.html' with link=url %}
             </div>
         </div>
     </section>
+
+    <!-- Modal confirm delete -->
+    <div class="modal fade" id="deleteModal{{ object.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ object.id }}" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="deleteModalLabel{{ object.id }}">Eliminar tatuaje</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ¿Confirmas ELIMINAR este tatuaje"?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <a href="{% url 'portfolio:tattoo_delete' object.id %}" class="btn btn-danger">Eliminar</a>
+          </div>
+          </div>
+        </div>
+    </div>
 {% endblock content %}

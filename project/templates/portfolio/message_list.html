@@ -32,16 +32,61 @@
                 </a>
             </td>
             <td>
-                <a href="{% url 'portfolio:message_update' message.id %}" class="btn btn-success">
+                <a href="{% url 'portfolio:message_update' message.id %}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal{{ message.id }}">
                     <i class="fas fa-edit"></i> Marcar
                 </a>
             </td>
             <td>
-                <a href="{% url 'portfolio:message_delete' message.id %}" class="btn btn-danger">
+                <a href="{% url 'portfolio:message_delete' message.id %}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ message.id }}">
                     <i class="fas fa-trash-alt"></i> Eliminar
                 </a>
             </td>
         </tr>
+
+        <!-- Modal confirm update -->
+        <div class="modal fade" id="updateModal{{ message.id }}" tabindex="-1" aria-labelledby="updateModalLabel{{ message.id }}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="updateModalLabel{{ message.id }}">Marcar mensaje</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if message.is_read %}
+                    ¿Confirmas marcar como NO LEIDO?
+                    {% else %}
+                        ¿Confirmas marcar como LEIDO?
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    {% if message.is_read %}
+                        <a href="{% url 'portfolio:message_update' message.id %}" class="btn btn-danger">Aceptar</a>
+                    {% else %}
+                        <a href="{% url 'portfolio:message_update' message.id %}" class="btn btn-success">Aceptar</a>
+                    {% endif %}
+              </div>
+              </div>
+            </div>
+        </div>
+        <!-- Modal confirm delete -->
+        <div class="modal fade" id="deleteModal{{ message.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ message.id }}" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel{{ message.id }}">Eliminar mensaje</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ¿Confirmas ELIMINAR el mensaje de "{{ message.name }}"?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{% url 'portfolio:message_delete' message.id %}" class="btn btn-danger">Eliminar</a>
+            </div>
+            </div>
+          </div>
+        </div>
     {% endfor %}
 {% endblock table_body %}
 

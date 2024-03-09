@@ -4,6 +4,9 @@
     <section id="galeria" class="container-fluid p-md-5 p-2">
         <h1 class="display-4 text-uppercase title-shadow fw-bolder pt-5">NOBODIES TATTOO</h2>
 
+        {% if request.user.is_authenticated %}
+            {% include 'components/messages.html' %}
+        {% endif %}    
         
         <div> 
             <h2 class="fw-bolder mt-5 text-uppercase">Disponibles</h2>

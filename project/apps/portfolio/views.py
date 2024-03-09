@@ -1,14 +1,13 @@
-from django.views.generic import TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic import DetailView, ListView
-from django.urls import reverse_lazy
-from . import forms
-from . import models
 from django.contrib import messages
-
-from reviews.models import Review 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic.edit import CreateView, UpdateView
+from . import forms, models
+from reviews.models import Review
 
 
 class indexView(CreateView):
@@ -16,7 +15,6 @@ class indexView(CreateView):
     form_class = forms.MessageForm
     success_url = reverse_lazy("portfolio:index")
     template_name="portfolio/index.html"
-
 
     def form_valid(self, form):
         messages.success(self.request, "El mensaje se envió correctamente.", extra_tags="alert alert-success")
@@ -56,31 +54,29 @@ class TattooCreateView(LoginRequiredMixin, CreateView):
     model = models.Tattoo
     form_class = forms.TattooForm
     success_url = reverse_lazy("portfolio:tattoo_list")
-
     def form_valid(self, form):
         messages.success(self.request, "El tatuaje se guardó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
  
-class TattooDeleteView(LoginRequiredMixin, DeleteView):
-    model = models.Tattoo
-    success_url = reverse_lazy("portfolio:tattoo_list")
-
-    def get_success_url(self):
-            messages.success(self.request, "El tatuaje se eliminó correctamente.", extra_tags="alert alert-danger")
-            return super().get_success_url()
-    
 
 class TattooUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Tattoo
     success_url = reverse_lazy("portfolio:tattoo_list")
     form_class = forms.TattooForm
-
     def form_valid(self, form):
         messages.success(self.request, "El tatuaje se actualizó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
- 
+    
 
- # Designs
+class TattooDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        tattoo = get_object_or_404(models.Tattoo, pk=pk)
+        tattoo.delete()
+        messages.success(request, "El tatuaje se eliminó correctamente.", extra_tags="alert alert-danger")
+        return redirect('portfolio:tattoo_list')   
+
+
+# Designs
     
 class DesignDetailView(LoginRequiredMixin, DetailView):
     model = models.Design
@@ -95,74 +91,70 @@ class DesignListView(LoginRequiredMixin, ListView):
         else:
             object_list = models.Design.objects.all()
         return object_list
+    
 
 class DesignCreateView(LoginRequiredMixin, CreateView):
     model = models.Design
     form_class = forms.DesignForm
     success_url = reverse_lazy("portfolio:design_list")
-
     def form_valid(self, form):
         messages.success(self.request, "El diseño se guardó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
  
-class DesignDeleteView(LoginRequiredMixin, DeleteView):
-    model = models.Design
-    success_url = reverse_lazy("portfolio:design_list")
-
-    def get_success_url(self):
-            messages.success(self.request, "El diseño se eliminó correctamente.", extra_tags="alert alert-danger")
-            return super().get_success_url()
     
 
 class DesignUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Design
     success_url = reverse_lazy("portfolio:design_list")
     form_class = forms.DesignForm
-
     def form_valid(self, form):
         messages.success(self.request, "El diseño se actualizó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     
-    # Messages
+
+class DesignDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        design = get_object_or_404(models.Design, pk=pk)
+        design.delete()
+        messages.success(request, "El diseño se eliminó correctamente.", extra_tags="alert alert-danger")
+        return redirect('portfolio:design_list') 
+    
+
+# Messages
 class MessageDetailView(LoginRequiredMixin, DetailView):
     model = models.Message
-
     def get(self, request, *args, **kwargs):
+        previous_url = request.META.get('HTTP_REFERER')
         self.object = self.get_object()
-        self.object.is_read = True  
-        self.object.save()
+        if not previous_url.endswith(f"message/detail/{self.object.id}"):
+            self.object.is_read = True  
+            self.object.save()
         return super().get(request, *args, **kwargs)
 
 
 class MessageListView(LoginRequiredMixin, ListView):
     model = models.Message
 
-class MessageDeleteView(LoginRequiredMixin, DeleteView):
-    model = models.Message
-    success_url = reverse_lazy("portfolio:message_list")
-
-    def get_success_url(self):
-            messages.success(self.request, "El mensaje se eliminó correctamente.", extra_tags="alert alert-danger")
-            return super().get_success_url()
     
-
-class MessageUpdateView(UpdateView):
-    model = models.Message
-    fields = [] 
-    success_url = reverse_lazy('portfolio:message_list')
-
-    def form_valid(self, form):
-        instance = form.instance
-        
-        if instance.is_read:
-            instance.is_read = False
-            messages.success(self.request, "El mensaje se marcó no como leído.", extra_tags="alert alert-danger")
+class MessageUpdateView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        message = get_object_or_404(models.Message, pk=pk)
+        if message.is_read:
+            message.is_read = False
+            messages.success(request, "El mensaje se marcó como no leido.", extra_tags="alert alert-danger")
         else:
-            instance.is_read = True
-            messages.success(self.request, "El mensaje se marcó como leído.", extra_tags="alert alert-success")
-            
-        instance.save()
-        return super().form_valid(form)
+            message.is_read = True
+            messages.success(request, "El mensaje se marcó como leido.", extra_tags="alert alert-success")
+        message.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    
+    
+class MessageDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        message = get_object_or_404(models.Message, pk=pk)
+        message.delete()
+        messages.success(request, "El mensaje se eliminó correctamente.", extra_tags="alert alert-danger")
+        return redirect('portfolio:message_list') 
 
     
 
