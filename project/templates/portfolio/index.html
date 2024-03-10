@@ -36,7 +36,7 @@
                     <p class="lead p-sobre-mi pb-2">
                         ¡Hola! Soy Ayelén, una tatuadora apasionada con 9 años de experiencia en la hermosa ciudad de Tandil. Me especializo en los estilos de tatuaje neotradicional y anime, creando diseños personalizados para que obtengas una pieza única. ¿Estás listo para tatuarte conmigo? ¡Contáctame y juntos crearemos un tatuaje que te acompañará toda la vida. ¡Hagamos magia en la piel! ✨🖤
                     </p>
-                    <a type="button" href="https://wa.me/542494271876" class="btn btn-outline-success btn-lg px-5" target="_blank">
+                    <a type="button" href="https://wa.me/542494271876" class="btn btn-outline-success btn-lg px-5 shadow-success" target="_blank">
                         <i class="fab fa-whatsapp"></i> Whatsapp
                     </a>                   
                 </div>
@@ -145,7 +145,7 @@
                 
                 {% for field in form %}
                     <div class="form-floating mb-3 mx-md-2 mx-lg-3">
-                        {{ field|add_class:"form-control" }}
+                        {{ field|add_class:"form-control shadow-secondary" }}
                         {{ field.label_tag }}
                         {% for error in field.errors %}
                             <div class="alert alert-danger">{{ error }}</div>
@@ -162,7 +162,7 @@
                 {% endif %}
                 
                 <div class="d-grid gap-3 mt-5">
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="submit" class="btn btn-success shadow-success">Guardar</button>
                 </div>
             </form>
         </div>

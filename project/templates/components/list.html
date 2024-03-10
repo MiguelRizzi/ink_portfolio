@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container-fluid p-md-5 p-2">
-        {% include 'components/messages.html' %} 
+    <div class="container-fluid p-md-5 p-2 pt-5">
         <h2 class="fw-bolder display-5 mb-4 mt-5 text-uppercase">{% block title_2 %}{% endblock %}</h2>       
+        {% include 'components/messages.html' %} 
 
         {% if object_list %}
 

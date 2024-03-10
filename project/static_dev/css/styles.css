@@ -8,6 +8,7 @@ main {
     min-height: calc(100vh - 80px);
 }
 
+
 footer{
     height: 80px;
 }
@@ -17,15 +18,20 @@ footer{
     background-color: rgba(0, 0, 0, 0.6)!important;
     transition: background-color 0.4s ease-in-out;
 }
+.dropdown-menu {
+    background-color: rgb(61, 61, 61)!important;
+}
+    
+    
+
 .navbar-scroll {
     background-color: rgb(31, 31, 31)!important;
     background-image: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 40%, rgba(10, 10, 10, 0.8) 100%)!important; /* Reemplaza "your-color" con el color deseado */
     box-shadow: 0 0 16px rgb(57, 57, 57);
 }
 .active{
-    text-decoration: underline rgb(224, 138, 193) 3px ;
+    text-decoration: underline rgb(255, 255, 255) 3px ;
 }
-
 a, .button-logout{
     color: rgb(255, 255, 255)!important;
 }
@@ -35,7 +41,9 @@ a, .button-logout{
     border-radius: 50%;
     object-fit: cover;
 }
-
+.username{
+    color:rgb(79, 189, 112)!important;
+}
 header{
     object-fit: contain;
     background-size: cover;
@@ -77,6 +85,12 @@ header{
 .shadow-secondary:hover{
     box-shadow: 0 0 14px rgb(164, 164, 164);
 }
+.shadow-success{
+    box-shadow: 0 0 10px rgb(1, 165, 83);
+}
+.shadow-success:hover{
+    box-shadow: 0 0 14px rgb(1, 171, 86);
+}
 .shadow-info{
     box-shadow: 0 0 10px rgb(113, 206, 232);
 }
@@ -116,4 +130,21 @@ footer{
 
 .fondo-light{
     background-image: linear-gradient(180deg, rgba(150, 150, 150, 0.8) 40%, rgba(245, 245, 245, 0.8) 100%);
+}
+
+
+@media (max-width: 768px) {
+    .dropdown-menu {
+        background-color: rgba(63, 63, 63, 0.1)!important;
+    }
+}
+
+@media (max-width: 454px) {
+    main {
+        min-height: calc(100vh - 130px);
+    }
+    
+    footer{
+        height: 130px;
+    }
 }
