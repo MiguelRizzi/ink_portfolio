@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.views import PasswordChangeView, LogoutView
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import View
@@ -48,3 +48,14 @@ class AvatarDeleteView(LoginRequiredMixin, View):
 class CustomPasswordChangeView(PasswordChangeView):
     template_name="users/change_password.html"
     success_url = reverse_lazy('portfolio:index')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Tu contraseña ha sido cambiada exitosamente.', extra_tags="alert alert-success")
+        return super().form_valid(form)
+
+class CustomLogoutView(LogoutView):
+    template_name="portfolio/index.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, 'Has cerrado sesión exitosamente.', extra_tags="alert alert-success")
+        return super().dispatch(request, *args, **kwargs)

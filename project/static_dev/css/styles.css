@@ -25,6 +25,7 @@ footer{
 .active{
     text-decoration: underline rgb(224, 138, 193) 3px ;
 }
+
 a, .button-logout{
     color: rgb(255, 255, 255)!important;
 }

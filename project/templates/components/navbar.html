@@ -69,10 +69,7 @@
                             <li><a class="dropdown-item" href="{% url 'users:change_password' %}">Cambiar contraseña</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form action="{% url 'users:logout' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="dropdown-item button-logout text-uppercase title-shadow">Logout</button>
-                                </form>
+                                <button type="submit" class="dropdown-item button-logout text-uppercase title-shadow" data-bs-toggle="modal" data-bs-target="#logoutModal">Cerrar sesión</button>      
                             </li>
                         </ul>
                     </li>
@@ -82,6 +79,28 @@
             <button id="button-theme" class="btn-dark" style="width:40px; border-radius: 5px;"><i id="icon-theme" class="bi bi-moon-fill"></i></button>
         </div>
     </div>
- </nav>
+</nav> 
+
+<!-- Modal confirm logout -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="logoutModalLabel{{ object.id }}">Cerrar sesión</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Confirmas cerrar sesión?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <form action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+          </form>
+      </div>
+      </div>
+    </div>
+</div>
 
  
