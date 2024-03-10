@@ -30,6 +30,7 @@ const themeIcon = document.querySelector("#icon-theme");
 const themeButton = document.querySelector("#button-theme");
 const elementsForChange = document.querySelectorAll(".fondo");
 const sectionsForChange = document.querySelectorAll("section");
+const aContactForChange = document.querySelectorAll(".a-contact");
 
 
 
@@ -45,6 +46,10 @@ const darkTheme = () => {
         section.classList.remove("section-light");
         section.classList.add("section-dark");
     });
+    aContactForChange.forEach((a) => {
+        a.classList.remove("text-black");
+        a.classList.add("text-white");
+    });
     localStorage.setItem("theme", "dark");
 }
 
@@ -59,6 +64,10 @@ const lightTheme = () => {
     sectionsForChange.forEach((section) => {
         section.classList.remove("section-dark");
         section.classList.add("section-light");
+    });
+    aContactForChange.forEach((a) => {
+        a.classList.remove("text-white");
+        a.classList.add("text-black");
     });
     localStorage.setItem("theme", "light");
 }
