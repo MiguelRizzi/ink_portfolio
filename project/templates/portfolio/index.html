@@ -10,15 +10,14 @@
 {% endblock styles %}
 
 {% block header %}
-    <header id="inicio" class="object-fit-md-cover">
+    <header id="inicio" class="object-fit-md-cover header-index">
         <div class="fondo-header">
             <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
                 <div class="col-lg-8 ">
-                    <h1 class="display-4 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo</h1>
-                    <p class="lead fw-bolder text-shadow text-center text-md-start">Neotradicional / Anime</p>
+                    <h1 class="display-2 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo</h1>
+                    <p class="lead fw-bolder text-shadow text-center text-md-start fs-3">Neotradicional / Anime</p>
                     <div class="d-flex gap-2 justify-content-md-start justify-content-center">
-                        <a type="button" href="#portfolio" class="btn btn-outline-info btn-lg px-4 gap-3 text-white">Galeria</a>
-                        <a type="button" href="#contacto" class="btn btn-outline-primary btn-lg px-4 text-white">Contacto</a>
+                        <a type="button" href="#contacto" class="btn btn-info btn-lg px-4 text-white">Contacto</a>
                     </div>
                 </div>
             </div>
@@ -36,7 +35,7 @@
                     <p class="lead p-sobre-mi pb-2">
                         ¡Hola! Soy Ayelén, una tatuadora apasionada con 9 años de experiencia en la hermosa ciudad de Tandil. Me especializo en los estilos de tatuaje neotradicional y anime, creando diseños personalizados para que obtengas una pieza única. ¿Estás listo para tatuarte conmigo? ¡Contáctame y juntos crearemos un tatuaje que te acompañará toda la vida. ¡Hagamos magia en la piel! ✨🖤
                     </p>
-                    <a type="button" href="https://wa.me/542494271876" class="btn btn-outline-success btn-lg px-5 shadow-success" target="_blank">
+                    <a type="button" href="https://wa.me/542494271876" class="btn btn-success btn-lg px-5 text-white" target="_blank">
                         <i class="fab fa-whatsapp"></i> Whatsapp
                     </a>                   
                 </div>
@@ -91,7 +90,7 @@
                     <div class="swiper-button-prev swiper-navBtn"></div>
                     <div class="swiper-pagination"></div>
                 </div>
-                <a href="{% url 'reviews:review_create' %}" class="btn btn-outline-info px-5 mt-3">Deja tu comentario aquí!!!✨</a>
+                <a href="{% url 'reviews:review_create' %}" class="btn btn-info px-5 mt-3">Deja tu comentario aquí!!!✨</a>
             </div>
         </div>
     </section>
@@ -145,7 +144,7 @@
                 
                 {% for field in form %}
                     <div class="form-floating mb-3 mx-md-2 mx-lg-3">
-                        {{ field|add_class:"form-control shadow-secondary" }}
+                        {{ field|add_class:"form-control" }}
                         {{ field.label_tag }}
                         {% for error in field.errors %}
                             <div class="alert alert-danger">{{ error }}</div>
@@ -161,8 +160,8 @@
                     </div>
                 {% endif %}
                 
-                <div class="d-grid gap-3 mt-5">
-                    <button type="submit" class="btn btn-success shadow-success">Guardar</button>
+                <div class="d-grid gap-3 mt-4 mx-md-2 mx-lg-3">
+                    <button type="submit" class="btn btn-info">Enviar</button>
                 </div>
             </form>
         </div>

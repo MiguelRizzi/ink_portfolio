@@ -31,6 +31,7 @@ const themeButton = document.querySelector("#button-theme");
 const elementsForChange = document.querySelectorAll(".fondo");
 const sectionsForChange = document.querySelectorAll("section");
 const aContactForChange = document.querySelectorAll(".a-contact");
+const cardsForChange = document.querySelectorAll(".card");
 
 
 
@@ -50,6 +51,10 @@ const darkTheme = () => {
         a.classList.remove("text-black");
         a.classList.add("text-white");
     });
+    cardsForChange.forEach((card) => {
+        card.classList.remove("card-light");
+        card.classList.add("card-dark");
+    });
     localStorage.setItem("theme", "dark");
 }
 
@@ -68,6 +73,10 @@ const lightTheme = () => {
     aContactForChange.forEach((a) => {
         a.classList.remove("text-white");
         a.classList.add("text-black");
+    });
+    cardsForChange.forEach((card) => {
+        card.classList.remove("card-dark");
+        card.classList.add("card-light");
     });
     localStorage.setItem("theme", "light");
 }

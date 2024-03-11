@@ -3,7 +3,7 @@
 {% block title_2 %}Listado de diseños{% endblock %}
 {% block search %}
     <!-- Sirve para buscar diseños. Se pasa a la variable consulta de la vista. -->
-    <div class="py-lg-4">
+    <div class="py-lg-4 py-3">
         <form action="{% url 'portfolio:tattoo_list' %}" method="get">
             <input name="consult" type="text" placeholder="Buscar...">
         </form>
@@ -38,17 +38,17 @@
             {% endif %}
             <td>
                 <a href="{% url 'portfolio:design_detail' design.id %}" class="btn btn-primary">
-                    <i class="fas fa-info-circle"></i> Detalle
+                    <i class="fas fa-eye"></i>
                 </a>
             </td>
             <td>
                 <a href="{% url 'portfolio:design_update' design.id %}" class="btn btn-success">
-                    <i class="fas fa-edit"></i> Actualizar
+                    <i class="fas fa-edit"></i>
                 </a>
             </td>
             <td>
                 <a href="{% url 'portfolio:design_delete' design.id %}" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal{{ design.id }}">
-                    <i class="fas fa-trash-alt"></i> Eliminar
+                    <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
         </tr>

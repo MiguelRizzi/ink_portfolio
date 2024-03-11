@@ -2,6 +2,12 @@
 
 {% block title_2 %}Bandeja de Entrada{% endblock %}
 {% block search %}
+   <!-- Sirve para buscar mensajes. Se pasa a la variable consulta de la vista. -->
+   <div class="py-lg-4 py-3">
+    <form action="{% url 'portfolio:tattoo_list' %}" method="get">
+        <input name="consult" type="text" placeholder="Buscar...">
+    </form>
+</div>
 {% endblock search %}
        
 {% block table_header %}
@@ -20,7 +26,7 @@
     {% for message in object_list %}
         <tr>
             <td>{{ message.name }}</td>
-            <td>{{ message.date }}</td>
+            <td>{{ message.date|date:"d M Y" }}</td>
             {% if message.is_read %}
                 <td class="text-success"><i class="fa fa-check"></i></td>
             {% else %}
@@ -28,17 +34,17 @@
             {% endif %}
             <td>
                 <a href="{% url 'portfolio:message_detail' message.id %}" class="btn btn-primary">
-                    <i class="fas fa-info-circle"></i> Leer
+                    <i class="fas fa-info-circle"></i>
                 </a>
             </td>
             <td>
                 <a href="{% url 'portfolio:message_update' message.id %}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal{{ message.id }}">
-                    <i class="fas fa-edit"></i> Marcar
+                    <i class="fas fa-edit"></i>
                 </a>
             </td>
             <td>
                 <a href="{% url 'portfolio:message_delete' message.id %}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ message.id }}">
-                    <i class="fas fa-trash-alt"></i> Eliminar
+                    <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
         </tr>

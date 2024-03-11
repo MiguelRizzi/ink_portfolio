@@ -42,6 +42,9 @@ footer{
 .nav-link, .dropdown-item, .button-logout{
     color: rgb(255, 255, 255)!important;
 }
+.nav-link:hover, .dropdown-item:hover, .button-logout:hover{
+    text-shadow: 0 0 14px rgb(141, 48, 64);
+}
 .icon-avatar{
     height: 35px; 
     width: 35px; 
@@ -49,12 +52,17 @@ footer{
     object-fit: cover;
 }
 .username{
-    color:rgb(79, 189, 112)!important;
+    color:rgb(172, 64, 82)!important;
 }
 header{
     object-fit: contain;
     background-size: cover;
-    height:95vh;
+}
+.header-index{
+    height:90vh;
+}
+.header-blog{
+    height:70vh;
 }
 .fondo-header{
     background-color: rgba(0, 0, 0, 0.15);
@@ -72,25 +80,22 @@ header{
 
 /* Sombras */
 .title-shadow {
-    text-shadow: 0 0 10px rgb(164, 61, 145);
-}
-.title-shadow:hover{
-    text-shadow: 0 0 14px rgb(193, 75, 172);
+    text-shadow: 0 0 8px rgb(35, 34, 34)
 }
 .text-shadow{
-    text-shadow: 0 0 4px rgb(121, 44, 107);
+    text-shadow: 0 0 4px rgb(56, 8, 16)
 }
 .shadow-primary{
-    box-shadow: 0 0 10px rgb(55, 76, 240);
+    box-shadow: 0 0 10px rgb(61, 97, 164);
 }
 .shadow-primary:hover{
-    box-shadow: 0 0 14px rgb(55, 76, 240);
+    box-shadow: 0 0 14px rgb(80, 114, 207);
 }
 .shadow-secondary{
-    box-shadow: 0 0 10px rgb(150, 150, 150);
+    box-shadow: 0 0 10px rgb(117, 45, 57);
 }
 .shadow-secondary:hover{
-    box-shadow: 0 0 14px rgb(164, 164, 164);
+    box-shadow: 0 0 14px rgb(202, 98, 116);
 }
 .shadow-success{
     box-shadow: 0 0 10px rgb(1, 165, 83);
@@ -98,13 +103,44 @@ header{
 .shadow-success:hover{
     box-shadow: 0 0 14px rgb(1, 171, 86);
 }
-.shadow-info{
-    box-shadow: 0 0 10px rgb(113, 206, 232);
+.shadow-pink{
+    box-shadow: 0 0 10px rgb(203, 88, 107);
 }
-.shadow-info:hover{
-    box-shadow: 0 0 14px rgb(113, 206, 232);
+.shadow-pink:hover{
+    box-shadow: 0 0 14px rgb(141, 50, 65);
+}
+.btn-outline-info{
+    border-color: rgb(164, 61, 145)!important;
+    color:rgb(255, 255, 255);
+}
+.btn-outline-info:hover{
+    background-color: rgb(199, 78, 98);
+    color:black;
 }
 
+.btn{
+    border-radius:1px;
+}
+.btn-info{
+    border-color: rgb(164, 61, 145)!important;
+    color:rgb(255, 255, 255);
+    background-color:rgb(172, 64, 82);
+    --bs-btn-active-bg:rgb(172, 64, 82)!important;
+}
+.btn-info:hover{
+    background-color: rgb(220, 96, 117);
+    color:black;
+}
+.text-info{
+    color:rgb(193, 53, 132)!important;
+}
+
+.btn-outline-warning{
+    border-color:rgb(193, 53, 132)!important;
+}
+.btn-outline-warning:hover{
+    background-color: #E1306C!important;
+}
 /* Transform tarjetas y botones */
 .scale, .btn {
     transition: transform 0.3s;
@@ -128,19 +164,22 @@ footer{
     background-color: rgb(28, 28, 28);
 }
 .section-light{
-    background-image: linear-gradient(180deg, rgba(245, 245, 245, 0.8) 40%, rgba(150, 150, 150, 0.8) 100%);
+    background-image: linear-gradient(180deg, rgba(245, 245, 245, 0.8) 40%, rgba(120, 120, 120, 0.8) 100%);
     box-shadow: 0 0 6px rgb(56, 56, 56);
     background-color: rgb(245, 245, 245);
 }
 .fondo-dark{
     background-image: linear-gradient(180deg, rgba(17, 17, 17, 0.8) 40%, rgba(0, 0, 0, 0.8) 100%);
-    
 }
-
 .fondo-light{
-    background-image: linear-gradient(180deg, rgba(150, 150, 150, 0.8) 40%, rgba(245, 245, 245, 0.8) 100%);
+    background-image: linear-gradient(180deg, rgba(120, 120, 120, 0.8) 40%, rgba(245, 245, 245, 0.8) 100%);
 }
-
+.card-dark{
+    background-color: rgb(37, 37, 37)!important;
+}
+.card-light{
+    background-color: rgb(141, 141, 141)!important;
+}
 
 @media (max-width: 768px) {
     .dropdown-menu {

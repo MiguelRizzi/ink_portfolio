@@ -4,7 +4,7 @@
 
 {% block search %}
     <!-- Sirve para buscar reseñas. Se pasa a la variable consult de la vista. -->
-    <div class="py-lg-4">
+    <div class="py-lg-4 py-3">
         <form action="{% url 'reviews:review_list' %}" method="get">
             <input name="consult" type="text" placeholder="Buscar...">
         </form>
@@ -40,17 +40,17 @@
        
             <td>
                 <a href="{% url 'reviews:review_detail' review.id %}" class="btn btn-primary">
-                    <i class="fas fa-eye"></i> Leer
+                    <i class="fas fa-eye"></i>
                 </a>
             </td>
             <td>
                 <a href="{% url 'reviews:review_update' review.id %}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal{{ review.id }}">
-                    <i class="fas fa-edit"></i> Aprobar
+                    <i class="fas fa-edit"></i>
                 </a>
             </td>
             <td>
                 <a href="{% url 'reviews:review_delete' review.id %}" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal{{ review.id }}">
-                    <i class="fas fa-trash-alt"></i> Eliminar
+                    <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
         </tr>

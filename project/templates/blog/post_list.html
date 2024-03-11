@@ -3,12 +3,12 @@
 
 
 {% block header %}
-    <header id="blog" class="object-fit-md-cover">
+    <header id="blog" class="cover header-blog">
         <div class="fondo-header">
             <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
                 <div class="col-lg-8 ">
-                    <h1 class="display-4 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo Blog</h1>
-                    <p class="lead fw-bolder text-shadow text-center text-md-start">Neotradicional / Anime</p>
+                    <h1 class="display-2 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo Blog</h1>
+                    <p class="lead fw-bolder text-shadow text-center text-md-start fs-3">Neotradicional / Anime</p>
                 </div>
             </div>
         </div>
@@ -18,49 +18,59 @@
     {% include 'components/messages.html' %}
 
     <section class="container-fluid p-md-5 p-2">
-        <div class="rounded-5 p-sm-5 p-4 mb-5 mb-md-0 fondo">
+        <div class="rounded-5 p-sm-5 p-4 mb-5 mb-md-0 row fondo">
 
-            {% for post in object_list %}               
-            <article class="blog-post container py-4 border-bottom">
-               <div class="row">
-                   <h2 class="link-body-emphasis mb-1 border-bottom">{{post.title}}</h2>
-                   <p class="text-secondary">{{ post.created_on }} por {{ post.user.username}} </p>
-                   {% if post.file %}
-                    <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center">
-                        <img src="{{ post.file.url}}" alt="{{post.title}}" style="height: 230px; width: 260px"/>
-                    </div> 
-                   {% endif %}
-                   <div class="col-12 col-lg-8 d-flex align-items-center flex-column p-3">
-                       <p class="text-center row">{{post.body}}</p>
-                       <div class="d-flex gap-2 justify-content-md-start justify-content-center">
-                           <a class="btn btn-primary" href="{% url 'blog:post_detail' post.id %}">Leer más</a>
-                           {% if post.user == request.user %}
-                               <a class="btn btn-success" href="{% url 'blog:post_update' post.id %}">Actualizar</a>
-                               <a class="btn btn-danger" href="{% url 'blog:post_delete' post.id %}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ post.id }}">Eliminar</a>
-                           {% endif %}
-                       </div>
-                   </div>          
-               </div>
-            </article>
-
-            <!-- Modal confirm delete -->
-            <div class="modal fade" id="deleteModal{{ post.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ post.id }}" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteModalLabel{{ post.id }}">Eliminar publicación</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="col-12 col-lg-6 order-lg-2 ">
+                <div class="card mb-4">
+                    <div class="card-header fw-semibold">Buscar publicaciones</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Buscar publicaciones..." aria-label="Buscar publicaciones..." aria-describedby="button-search" />
+                            <button class="btn btn-info " id="button-search" type="button">Buscar</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                    ¿Confirmas ELIMINAR esta publicación"?
+                </div>
+               
+                <div class="card mb-4">
+                    <div class="card-header fw-semibold">¡Descubre el Arte en la Piel!</div>
+                    <div class="card-body">
+                        <p><strong>Nobodies Tattoo</strong> es un espacio donde la creatividad y la expresión personal se fusionan para crear auténticas obras maestras en la piel. Aquí encontrarás todo lo que necesitas saber sobre tatuajes, desde las últimas tendencias hasta consejos para el cuidado posterior. Mantente al día con las últimas novedades en el mundo del tatuaje y no te pierdas las promociones especiales. Entérate aquí de descuentos en diseños seleccionados y de eventos exclusivos para clientes. ¡Esperamos verte pronto en <strong>Nobodies Tattoo</strong>! 🌟🔥🖤</p>
+                        <div>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'blog:post_create' %}" class="btn btn-info"> Crear publicación</a>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <a href="{% url 'blog:post_delete' post.id %}" class="btn btn-danger">Eliminar</a>
                 </div>
-                </div>
-                </div>
+                
             </div>
+           
+            
+            
+            {% for post in object_list %}               
+
+        
+                    <div class="col-12 col-lg-6 mb-4 order-{{forloop.counter}}">
+
+                        <div class="card text-start rounded-1" style=" border:none;">
+                            {% if post.file %} 
+                                <img src="{{ post.file.url }}" class="card-img-top object-fit-cover" alt="green iguana" style="height: 300px"/>
+                            {% endif %}
+                            <div class="card-body" style="height: 250px;">
+                                <p class="text-secondary">
+                                    {{ post.created_on }} por <span class="fw-semibold">{{ post.user.username}}.</span>
+                                </p>
+                                <h4>{{post.title}}</h4>
+                                <p class="card-text">
+                                    {{post.body|truncatechars:200}}
+                                </p>
+                            <div>
+                                <a class="text-uppercase fw-semibold" href="{% url 'blog:post_detail' post.id %}" style="color:rgb(220, 101, 121)">Leer publicación ></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
             {% endfor %}
 
         </div>
