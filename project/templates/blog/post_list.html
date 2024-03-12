@@ -56,7 +56,7 @@
                             {% if post.file %} 
                                 <img src="{{ post.file.url }}" class="card-img-top object-fit-cover" alt="green iguana" style="height: 300px"/>
                             {% endif %}
-                            <div class="card-body" style="height: 250px;">
+                            <div class="card-body">
                                 <p class="text-secondary">
                                     {{ post.created_on }} por <span class="fw-semibold">{{ post.user.username}}.</span>
                                 </p>

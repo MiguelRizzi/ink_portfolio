@@ -4,7 +4,7 @@
     scroll-behavior: smooth;
     
 }
-main {
+main, .h-section {
     min-height: calc(100vh - 80px);
 }
 body{
@@ -83,7 +83,7 @@ header{
     text-shadow: 0 0 8px rgb(35, 34, 34)
 }
 .text-shadow{
-    text-shadow: 0 0 4px rgb(56, 8, 16)
+    text-shadow:  0 0 4px rgb(35, 34, 34)
 }
 .shadow-primary{
     box-shadow: 0 0 10px rgb(61, 97, 164);
@@ -188,11 +188,15 @@ footer{
 }
 
 @media (max-width: 454px) {
-    main {
+    main, .h-section {
         min-height: calc(100vh - 130px);
     }
-    
     footer{
         height: 130px;
     }
-}
+    .p-footer{
+        font-size: 17px!important;
+    }
+
+}   
+

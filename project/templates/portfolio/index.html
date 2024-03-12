@@ -26,12 +26,12 @@
 {% endblock header %}
 
 {% block content %}
-    <section id="sobre-mi" class="container-fluid p-md-5 p-2">
+    <section id="sobre-mi" class="container-fluid p-md-5 p-2 pb-5">
         {% include 'components/messages.html' %}
         <div class="row align-items-center justify-content-center pt-4">
             <div class="col-md-7 col-12">
                 <h2 class="display-4 text-uppercase title-shadow fw-bolder">Sobre mi</h2>
-                <div class="rounded-5 p-sm-5 p-4 mb-5 mb-md-0 fondo">
+                <div class="rounded-5 p-sm-5 p-4 mb-4 mb-md-0 fondo">
                     <p class="lead p-sobre-mi pb-2">
                         ¡Hola! Soy Ayelén, una tatuadora apasionada con 9 años de experiencia en la hermosa ciudad de Tandil. Me especializo en los estilos de tatuaje neotradicional y anime, creando diseños personalizados para que obtengas una pieza única. ¿Estás listo para tatuarte conmigo? ¡Contáctame y juntos crearemos un tatuaje que te acompañará toda la vida. ¡Hagamos magia en la piel! ✨🖤
                     </p>
@@ -40,10 +40,10 @@
                     </a>                   
                 </div>
             </div>
-            <div class="col-md-5 col-12 rounded border-dark mb-5 mb-md-0 div-foto p-sm-0 p-4">
+            <div class="col-md-5 col-12 rounded border-dark mb-4 mb-md-0 div-foto p-sm-0 p-4">
                 <img class="w-90 w-md-100 img-thumbnail foto shadow-secondary" src="{% static 'img/tatuando.jpg' %}" alt="Foto Tatuando">
             </div>
-            <div class="container px-4 py-5" id="featured-3">
+            <div class="container px-4 py-4" id="featured-3">
                 <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
                     <div class="feature col">
                         <div class="feature-icon">
@@ -96,11 +96,11 @@
     </section>
 
     <!-- Galeria -->
-    <section id="galeria" class="container-fluid p-md-5 p-2">
+    <section id="galeria" class="container-fluid p-md-5 p-2 pb-5">
         <h2 class="display-4 text-uppercase title-shadow fw-bolder">Galerias</h2>
         <div class="row align-items-center justify-content-center pt-4"> 
 
-            <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12">
+            <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12 mb-4 mb-md-0">
                 <div class="swiper-wrapper swiper-wrapper-gallery">
                     {% for tattoo in tattoo_list %}
                     <div class="swiper-slide swiper-slide-gallery">
@@ -135,7 +135,7 @@
     </section>
     
     <!-- Contacto -->
-    <section id="contacto" class="container-fluid p-md-5 p-2">
+    <section id="contacto" class="container-fluid p-md-5 p-2 pb-5">
         <h2 class="display-4 text-uppercase title-shadow pt-4 fw-bolder">Contacto</h2>
      
         <div class="row align-items-center justify-content-center mb-5">
