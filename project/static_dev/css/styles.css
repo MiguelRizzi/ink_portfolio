@@ -58,20 +58,23 @@ footer{
 .username{
     color:rgb(172, 64, 82)!important;
 }
-header{
+
+.header-index{
+    height:95vh;
     background-image:url("../img/machine-tattoo.jpg");
     object-position:top;
     background-position: top;
     background-size: cover;
 }
-.header-index{
-    height:95vh;
-}
 .header-blog{
-    height:70vh;
+    height:95vh;
+    background-image:url("../img/tattoo-machine2.jpg");
+    object-position:bottom;
+    background-position: bottom;
+    background-size: cover;
 }
 .fondo-header{
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.2);
     height: 100%;
 }
 
