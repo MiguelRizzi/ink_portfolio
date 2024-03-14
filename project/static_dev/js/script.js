@@ -29,7 +29,7 @@ const body = document.querySelector("body");
 const themeIcon = document.querySelector("#icon-theme");
 const themeButton = document.querySelector("#button-theme");
 const elementsForChange = document.querySelectorAll(".fondo");
-const sectionsForChange = document.querySelectorAll("section");
+const bodyForChange = document.querySelector("body");
 const aContactForChange = document.querySelectorAll(".a-contact");
 const cardsForChange = document.querySelectorAll(".card");
 
@@ -43,10 +43,6 @@ const darkTheme = () => {
         elemento.classList.remove("fondo-light");
         elemento.classList.add("fondo-dark");
     });
-    sectionsForChange.forEach((section) => {
-        section.classList.remove("section-light");
-        section.classList.add("section-dark");
-    });
     aContactForChange.forEach((a) => {
         a.classList.remove("text-black");
         a.classList.add("text-white");
@@ -55,6 +51,8 @@ const darkTheme = () => {
         card.classList.remove("card-light");
         card.classList.add("card-dark");
     });
+    bodyForChange.classList.remove("image-light");
+    bodyForChange.classList.add("image-dark");
     localStorage.setItem("theme", "dark");
 }
 
@@ -65,11 +63,7 @@ const lightTheme = () => {
     elementsForChange.forEach((elemento) => {
         elemento.classList.remove("fondo-dark");
         elemento.classList.add("fondo-light");
-    });
-    sectionsForChange.forEach((section) => {
-        section.classList.remove("section-dark");
-        section.classList.add("section-light");
-    });
+    }); 
     aContactForChange.forEach((a) => {
         a.classList.remove("text-white");
         a.classList.add("text-black");
@@ -78,6 +72,8 @@ const lightTheme = () => {
         card.classList.remove("card-dark");
         card.classList.add("card-light");
     });
+    bodyForChange.classList.remove("image-dark");
+    bodyForChange.classList.add("image-light");
     localStorage.setItem("theme", "light");
 }
 const loadTheme = () => {

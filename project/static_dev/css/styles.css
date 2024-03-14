@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     
 }
 main, .h-section {
     min-height: calc(100vh - 80px);
 }
 body{
-    background-image: url("../img/fondo.jpeg");
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,7 +26,7 @@ footer{
 
 /* Header y Navbar*/
 .navbar {
-    background-color: rgba(0, 0, 0, 0.6)!important;
+    background-color: rgba(0, 0, 0, 0.01)!important;
     transition: background-color 0.4s ease-in-out;
 }
 .dropdown-menu {
@@ -34,7 +38,7 @@ footer{
 .navbar-scroll {
     background-color: rgb(31, 31, 31)!important;
     background-image: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 40%, rgba(10, 10, 10, 0.8) 100%)!important; /* Reemplaza "your-color" con el color deseado */
-    box-shadow: 0 0 16px rgb(57, 57, 57);
+    box-shadow: 0 0 6px rgb(0, 0, 0);
 }
 .active{
     text-decoration: underline rgb(255, 255, 255) 3px ;
@@ -55,11 +59,13 @@ footer{
     color:rgb(172, 64, 82)!important;
 }
 header{
-    object-fit: contain;
+    background-image:url("../img/machine-tattoo.jpg");
+    object-position:top;
+    background-position: top;
     background-size: cover;
 }
 .header-index{
-    height:90vh;
+    height:95vh;
 }
 .header-blog{
     height:70vh;
@@ -91,12 +97,6 @@ header{
 .shadow-primary:hover{
     box-shadow: 0 0 14px rgb(80, 114, 207);
 }
-.shadow-secondary{
-    box-shadow: 0 0 10px rgb(117, 45, 57);
-}
-.shadow-secondary:hover{
-    box-shadow: 0 0 14px rgb(202, 98, 116);
-}
 .shadow-success{
     box-shadow: 0 0 10px rgb(1, 165, 83);
 }
@@ -118,9 +118,6 @@ header{
     color:black;
 }
 
-.btn{
-    border-radius:1px;
-}
 .btn-info{
     border-color: rgb(164, 61, 145)!important;
     color:rgb(255, 255, 255);
@@ -158,29 +155,27 @@ textarea{
 footer{
     background-color: rgb(21, 21, 21)
 }
-.section-dark{
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 40%, rgba(8, 8, 8, 0.8) 100%);
-    box-shadow: 0 0 6px rgb(56, 56, 56);
-    background-color: rgb(28, 28, 28);
-}
-.section-light{
-    background-image: linear-gradient(180deg, rgba(245, 245, 245, 0.8) 40%, rgba(120, 120, 120, 0.8) 100%);
-    box-shadow: 0 0 6px rgb(56, 56, 56);
-    background-color: rgb(245, 245, 245);
-}
+
 .fondo-dark{
     background-image: linear-gradient(180deg, rgba(17, 17, 17, 0.8) 40%, rgba(0, 0, 0, 0.8) 100%);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 .fondo-light{
-    background-image: linear-gradient(180deg, rgba(120, 120, 120, 0.8) 40%, rgba(245, 245, 245, 0.8) 100%);
+    background-image: linear-gradient(180deg, rgba(238, 238, 238, 0.8) 40%, rgba(186, 186, 186, 0.8) 100%);
+    background-color: rgba(245, 245, 245, 0.9);
 }
 .card-dark{
-    background-color: rgb(37, 37, 37)!important;
+    background-color: rgba(37, 37, 37, 0.9)!important;
 }
 .card-light{
-    background-color: rgb(141, 141, 141)!important;
+    background-color: rgba(203, 203, 203, 0.9)!important;
 }
-
+.image-dark{
+    background-image:url("../img/fondo-body-dark.jpg");
+}
+.image-light{
+    background-image:url("../img/fondo-body-light.jpg");
+}
 @media (max-width: 768px) {
     .dropdown-menu {
         background-color: rgba(63, 63, 63, 0.1)!important;
@@ -200,3 +195,6 @@ footer{
 
 }   
 
+.card, .btn, input, textarea, select{
+    border-radius: 1px!important;
+}

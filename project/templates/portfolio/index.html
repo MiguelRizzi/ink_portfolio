@@ -13,7 +13,7 @@
     <header id="inicio" class="object-fit-md-cover header-index">
         <div class="fondo-header">
             <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
-                <div class="col-lg-8 ">
+                <div class="col-lg-8 text-white">
                     <h1 class="display-2 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo</h1>
                     <p class="lead fw-bolder text-shadow text-center text-md-start fs-3">Neotradicional / Anime</p>
                     <div class="d-flex gap-2 justify-content-md-start justify-content-center">
@@ -26,11 +26,11 @@
 {% endblock header %}
 
 {% block content %}
-    <section id="sobre-mi" class="container-fluid p-md-5 p-2 pb-5">
+    <section id="sobre-mi" class="container-fluid p-md-5 p-2 pb-5 fondo">
         {% include 'components/messages.html' %}
         <div class="row align-items-center justify-content-center pt-4">
             <div class="col-md-7 col-12">
-                <h2 class="display-4 text-uppercase title-shadow fw-bolder">Sobre mi</h2>
+                <h2 class="display-4 text-uppercase fw-bolder">Sobre mi</h2>
                 <div class="rounded-5 p-sm-5 p-4 mb-4 mb-md-0 fondo">
                     <p class="lead p-sobre-mi pb-2">
                         ¡Hola! Soy Ayelén, una tatuadora apasionada con 9 años de experiencia en la hermosa ciudad de Tandil. Me especializo en los estilos de tatuaje neotradicional y anime, creando diseños personalizados para que obtengas una pieza única. ¿Estás listo para tatuarte conmigo? ¡Contáctame y juntos crearemos un tatuaje que te acompañará toda la vida. ¡Hagamos magia en la piel! ✨🖤
@@ -68,36 +68,36 @@
                     </div>
                 </div>
             </div>
-            <div class="">
-                <h3 class="display-4 text-uppercase title-shadow fw-bolder">Comentarios</h2>
-                <div class="slide-container swiper w-100">
-                    <div class="slide-content review overflow-hidden">
-                        <div class="card-wrapper swiper-wrapper">
-                           
-                            {% for review in review_list %}
-                                <div class="card swiper-slide">
-                                    <div class="card-content p-3" style="height: 180px;">
-                                        <p class="p-valoracion">{% for i in "x"|ljust:review.rating %}⭐{% endfor %}</p>
-                                        <p class="fw-bold">{{ review.name }}</p>
-                                        <p>{{ review.review|truncatechars:80 }}</p>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                 
-                        </div>
-                    </div>
-                    <div class="swiper-button-next swiper-navBtn"></div>
-                    <div class="swiper-button-prev swiper-navBtn"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <a href="{% url 'reviews:review_create' %}" class="btn btn-info px-5 mt-3">Deja tu comentario aquí!!!✨</a>
-            </div>
         </div>
+    </section>
+    <section class="container-fluid p-md-5 p-2 pb-5">
+        <h3 class="display-4 text-uppercase fw-bolder">Comentarios</h2>
+        <div class="slide-container swiper w-100">
+            <div class="slide-content review overflow-hidden">
+                <div class="card-wrapper swiper-wrapper">
+                   
+                    {% for review in review_list %}
+                        <div class="card swiper-slide">
+                            <div class="card-content p-3" style="height: 180px;">
+                                <p class="p-valoracion">{% for i in "x"|ljust:review.rating %}⭐{% endfor %}</p>
+                                <p class="fw-bold">{{ review.name }}</p>
+                                <p>{{ review.review|truncatechars:80 }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+         
+                </div>
+            </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <a href="{% url 'reviews:review_create' %}" class="btn btn-info px-5 mt-3">Deja tu comentario aquí!!!✨</a>
     </section>
 
     <!-- Galeria -->
-    <section id="galeria" class="container-fluid p-md-5 p-2 pb-5">
-        <h2 class="display-4 text-uppercase title-shadow fw-bolder">Galerias</h2>
+    <section id="galeria" class="container-fluid p-md-5 p-2 pb-5 fondo">
+        <h2 class="display-4 text-uppercase fw-bolder">Galerias</h2>
         <div class="row align-items-center justify-content-center pt-4"> 
 
             <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12 mb-4 mb-md-0">
@@ -136,10 +136,10 @@
     
     <!-- Contacto -->
     <section id="contacto" class="container-fluid p-md-5 p-2 pb-5">
-        <h2 class="display-4 text-uppercase title-shadow pt-4 fw-bolder">Contacto</h2>
+        <h2 class="display-4 text-uppercase pt-4 fw-bolder">Contacto</h2>
      
         <div class="row align-items-center justify-content-center mb-5">
-            <form method="post" class="col-md-9 col-lg-7 col-12 p-4 fondo rounded-5 p-5">
+            <form method="post" class="col-md-9 col-lg-7 col-12 fondo rounded-5 p-5">
                 {% csrf_token %}
                 
                 {% for field in form %}
@@ -165,43 +165,43 @@
                 </div>
             </form>
         </div>
-        
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-map-marked-alt fa-2x mb-2"></i>
-                            <h4 class="text-uppercase m-0">Dirección</h4>
-                            <hr class="my-4 mx-auto" />
-                            <a class="a-contact fw-semibold" href="https://www.google.com/maps/place/Ugalde+2159,+Tandil,+Provincia+de+Buenos+Aires/@-37.3001473,-59.1262451,17z/data=!3m1!4b1!4m5!3m4!1s0x9591201804b28063:0x884ad7fac9b10c79!8m2!3d-37.3001473!4d-59.1262451?entry=ttu" target="_blank">
-                                Ugalde 2159 - Tandil
-                            </a>
-                        </div>
+    </section>
+
+    <section class="container-fluid p-md-5 p-4 pb-5 fondo">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt fa-2x mb-2"></i>
+                        <h4 class="text-uppercase m-0">Dirección</h4>
+                        <hr class="my-4 mx-auto" />
+                        <a class="a-contact fw-semibold" href="https://www.google.com/maps/place/Ugalde+2159,+Tandil,+Provincia+de+Buenos+Aires/@-37.3001473,-59.1262451,17z/data=!3m1!4b1!4m5!3m4!1s0x9591201804b28063:0x884ad7fac9b10c79!8m2!3d-37.3001473!4d-59.1262451?entry=ttu" target="_blank">
+                            Ugalde 2159 - Tandil
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-envelope fa-2x mb-2"></i>
-                            <h4 class="text-uppercase m-0">Email</h4>
-                            <hr class="my-4 mx-auto" />
-                            <a class="a-contact fw-semibold" href="mailto:nobodies.tattootandil@gmail.com" target="_blank">
-                                nobodies.tattootandil@gmail.com
-                            </a>
-                        </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope fa-2x mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4 mx-auto" />
+                        <a class="a-contact fw-semibold" href="mailto:nobodies.tattootandil@gmail.com" target="_blank">
+                            nobodies.tattootandil@gmail.com
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fab fa-whatsapp fa-2x mb-2"></i>
-                            <h4 class="text-uppercase m-0">Whatsapp</h4>
-                            <hr class="my-4 mx-auto" />
-                            <a class="a-contact fw-semibold" href="https://wa.me/542494271876" target="_blank">
-                                +54 9 2494 271876
-                            </a>
-                        </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fab fa-whatsapp fa-2x mb-2"></i>
+                        <h4 class="text-uppercase m-0">Whatsapp</h4>
+                        <hr class="my-4 mx-auto" />
+                        <a class="a-contact fw-semibold" href="https://wa.me/542494271876" target="_blank">
+                            +54 9 2494 271876
+                        </a>
                     </div>
                 </div>
             </div>
