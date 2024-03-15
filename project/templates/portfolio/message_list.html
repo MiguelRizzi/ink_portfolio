@@ -4,10 +4,11 @@
 {% block search %}
    <!-- Sirve para buscar mensajes. Se pasa a la variable consulta de la vista. -->
    <div class="py-lg-4 py-3">
-    <form action="{% url 'portfolio:tattoo_list' %}" method="get">
+    <form action="{% url 'portfolio:message_list' %}" method="get">
         <input name="consult" type="text" placeholder="Buscar...">
     </form>
 </div>
+
 {% endblock search %}
        
 {% block table_header %}

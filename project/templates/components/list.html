@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="container-fluid p-md-5 p-2 pt-5 h-section">
-        <h2 class="fw-bolder display-5 mb-4 mt-5 text-uppercase">{% block title_2 %}{% endblock %}</h2>       
+    <section class="container-fluid p-sm-5 p-0 pt-5 h-section">
+        <h2 class="fw-bolder display-5 mb-4 mt-5 text-uppercase pt-4">{% block title_2 %}{% endblock %}</h2>       
         {% include 'components/messages.html' %} 
 
+        {% block search %}{% endblock search %}
+        
         {% if object_list %}
 
-            {% block search %}{% endblock search %}
     
             {% block list %}
-                <div class="container">
-                    <table class="table">
-                        <thead>
-                            {% block table_header %}
-                            {% endblock table_header %}
-                        </thead>
-                        <tbody>
-                            {% block table_body %}
-                            {% endblock table_body %}
-                        </tbody>
-                    </table>
-                </div>
+              
+                <table class="table">
+                    <thead>
+                        {% block table_header %}
+                        {% endblock table_header %}
+                    </thead>
+                    <tbody>
+                        {% block table_body %}
+                        {% endblock table_body %}
+                    </tbody>
+                </table>
+               
                 <p class="mt-5 fw-semibold text-center">Total: {{ object_list | length }}</p>
             {% endblock list %}
         {% else %}

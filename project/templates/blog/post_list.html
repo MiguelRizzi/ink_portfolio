@@ -23,21 +23,21 @@
             <div class="col-12 col-lg-6 order-lg-2 ">
                 <div class="card mb-4">
                     <div class="card-header fw-semibold">Buscar publicaciones</div>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Buscar publicaciones..." aria-label="Buscar publicaciones..." aria-describedby="button-search" />
-                            <button class="btn btn-info " id="button-search" type="button">Buscar</button>
-                        </div>
+                    <div class="card-body">   
+                        <form class="input-group" action="{% url 'blog:post_list' %}" method="get">
+                            <input name="consult" class="form-control" type="text" placeholder="Buscar publicaciones..." />
+                            <button class="btn btn-info " id="button-search" type="submit">Buscar</button>
+                        </form>   
                     </div>
                 </div>
                
                 <div class="card mb-4">
                     <div class="card-header fw-semibold">¡Descubre el Arte en la Piel!</div>
-                    <div class="card-body">
+                    <div class="card-body pt-4 pb-5">
                         <p><strong>Nobodies Tattoo</strong> es un espacio donde la creatividad y la expresión personal se fusionan para crear auténticas obras maestras en la piel. Aquí encontrarás todo lo que necesitas saber sobre tatuajes, desde las últimas tendencias hasta consejos para el cuidado posterior. Mantente al día con las últimas novedades en el mundo del tatuaje y no te pierdas las promociones especiales. Entérate aquí de descuentos en diseños seleccionados y de eventos exclusivos para clientes. ¡Esperamos verte pronto en <strong>Nobodies Tattoo</strong>! 🌟🔥🖤</p>
                         <div>
                             {% if request.user.is_authenticated %}
-                                <a href="{% url 'blog:post_create' %}" class="btn btn-info"> Crear publicación</a>
+                                <a href="{% url 'blog:post_create' %}" class="btn btn-info mt-2"> Crear publicación</a>
                             {% endif %}
                         </div>
                     </div>
@@ -45,33 +45,43 @@
                 
             </div>
            
-            
-            
-            {% for post in object_list %}               
+            {% if object_list %}
+                {% for post in object_list %}               
 
-        
-                    <div class="col-12 col-lg-6 mb-4 order-{{forloop.counter}}">
+            
+                        <div class="col-12 col-lg-6 mb-4 order-{{forloop.counter}}">
 
-                        <div class="card text-start rounded-1" style=" border:none;">
-                            {% if post.file %} 
-                                <img src="{{ post.file.url }}" class="card-img-top object-fit-cover" alt="green iguana" style="height: 300px"/>
-                            {% endif %}
-                            <div class="card-body">
-                                <p class="text-secondary">
-                                    {{ post.created_on }} por <span class="fw-semibold">{{ post.user.username}}.</span>
-                                </p>
-                                <h4>{{post.title}}</h4>
-                                <p class="card-text">
-                                    {{post.body|truncatechars:200}}
-                                </p>
-                            <div>
-                                <a class="text-uppercase fw-semibold" href="{% url 'blog:post_detail' post.id %}" style="color:rgb(220, 101, 121)">Leer publicación ></a>
-                            </div>
+                            <div class="card text-start rounded-1" style=" border:none;">
+                                {% if post.file %} 
+                                    <img src="{{ post.file.url }}" class="card-img-top object-fit-cover post-list-image" alt="{{ post.title }}"/>
+                                {% endif %}
+                                <div class="card-body">
+                                    <p class="text-secondary">
+                                        {{ post.created_on }} por <span class="fw-semibold">{{ post.user.username}}.</span>
+                                    </p>
+                                    <h4>{{post.title}}</h4>
+                                    <p class="card-text">
+                                        {{post.body|truncatechars:200}}
+                                    </p>
+                                <div>
+                                    <a class="text-uppercase fw-semibold" href="{% url 'blog:post_detail' post.id %}" style="color:rgb(220, 101, 121)">Leer publicación ></a>
+                                </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+            <div class="col-12 col-lg-6 mb-4" >
+
+                <div class="card">
+                    <div class="card-body py-4">
+                        <h4 class="card-text fs-5 text-secondary">No hay Resultados.</h3>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
 
         </div>
     </section>

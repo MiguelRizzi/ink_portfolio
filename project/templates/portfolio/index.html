@@ -26,9 +26,11 @@
 {% endblock header %}
 
 {% block content %}
-    <section id="sobre-mi" class="container-fluid p-md-5 p-2 pb-5 fondo">
+<section id="sobre-mi">
+    <div class="container-fluid p-md-5 p-2 pb-5 fondo">
         {% include 'components/messages.html' %}
         <div class="row align-items-center justify-content-center pt-4">
+            <!--Sobre mi-->
             <div class="col-md-7 col-12">
                 <h2 class="display-4 text-uppercase fw-bolder">Sobre mi</h2>
                 <div class="rounded-5 p-sm-5 p-4 mb-4 mb-md-0 fondo">
@@ -40,37 +42,41 @@
                     </a>                   
                 </div>
             </div>
-            <div class="col-md-5 col-12 rounded border-dark mb-4 mb-md-0 div-foto p-sm-0 p-4">
+            <div class="col-md-5 col-12 border-dark mb-4 mb-md-0 div-foto p-sm-0 p-4">
                 <img class="w-90 w-md-100 img-thumbnail foto shadow-secondary" src="{% static 'img/tatuando.jpg' %}" alt="Foto Tatuando">
             </div>
+
+            <!-- Servicios -->
             <div class="container px-4 py-4" id="featured-3">
                 <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
                     <div class="feature col">
                         <div class="feature-icon">
-                            <i class="fas fa-fire fa-3x"></i> <!-- Icono de fuego para representar tatuajes -->
+                            <i class="fas fa-fire fa-3x"></i> 
                         </div>
                         <h2>Tatuajes</h2>
                         <p>Diseños únicos y creativos para expresar tu personalidad a través del arte en la piel.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon">
-                            <i class="fas fa-paint-brush fa-3x"></i> <!-- Icono de pincel para representar diseños personalizados -->
+                            <i class="fas fa-paint-brush fa-3x"></i> 
                         </div>
                         <h2>Diseños personalizados</h2>
                         <p>Trabajos a medida que reflejen tu estilo y gusto personal, creando piezas únicas para ti.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon">
-                            <i class="fas fa-undo fa-3x"></i> <!-- Icono de flecha circular para representar cover ups -->
+                            <i class="fas fa-undo fa-3x"></i>
                         </div>
                         <h2>Cover Ups</h2>
                         <p>Soluciones creativas para cubrir tatuajes antiguos o no deseados con diseños nuevos y frescos.</p>
                     </div>
                 </div>
-            </div>
+            </div>      
         </div>
-    </section>
-    <section class="container-fluid p-md-5 p-2 pb-5">
+    </div>
+
+    <!-- Comentarios -->
+    <div class="container-fluid p-5 px-4 px-sm-5">
         <h3 class="display-4 text-uppercase fw-bolder">Comentarios</h2>
         <div class="slide-container swiper w-100">
             <div class="slide-content review overflow-hidden">
@@ -93,19 +99,23 @@
             <div class="swiper-pagination"></div>
         </div>
         <a href="{% url 'reviews:review_create' %}" class="btn btn-info px-5 mt-3">Deja tu comentario aquí!!!✨</a>
-    </section>
+    </div>
+</section>
 
-    <!-- Galeria -->
-    <section id="galeria" class="container-fluid p-md-5 p-2 pb-5 fondo">
+
+<!-- Sección Galerias -->
+<section id="galeria">
+    <div class="container-fluid p-md-5 p-2 pb-5 fondo">
         <h2 class="display-4 text-uppercase fw-bolder">Galerias</h2>
         <div class="row align-items-center justify-content-center pt-4"> 
 
-            <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12 mb-4 mb-md-0">
+            <!-- Slider tatuajes -->
+            <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12 mb-4 mb-md-0 scale-div slider-tattoos">
                 <div class="swiper-wrapper swiper-wrapper-gallery">
                     {% for tattoo in tattoo_list %}
                     <div class="swiper-slide swiper-slide-gallery">
                         <a href="{% url 'portfolio:tattoo_gallery' %}">
-                            <h3 id="h3-slider-tattoos">TATUAJES</h3>
+                            <h3 id="h3-slider-tattoos" class="fs-1">TATUAJES</h3>
                             <div id="square-tattoos" class="square">
                                 <div></div>
                             </div>
@@ -116,12 +126,13 @@
                 </div>
             </div>
             
-            <div class="swiper-container swiper-container-gallery slider2 col-md-6 col-12">
+            <!-- Slider diseños -->
+            <div class="swiper-container swiper-container-gallery slider2 col-md-6 col-12 scale-div slider-desgins">
                 <div class="swiper-wrapper swiper-wrapper-gallery">
                     {% for design in design_list %}
                     <div class="swiper-slide swiper-slide-gallery">
                         <a href="{% url 'portfolio:design_gallery' %}">
-                            <h3 id="h3-slider-designs">DISEÑOS</h3>
+                            <h3 id="h3-slider-designs" class="fs-1">DISEÑOS</h3>
                             <div id="square-designs" class="square">
                                 <div></div>
                             </div>
@@ -132,18 +143,21 @@
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- Contacto -->
-    <section id="contacto" class="container-fluid p-md-5 p-2 pb-5">
+    </div>
+</section>
+
+
+<!-- Sección contacto -->
+<section id="contacto">  
+    <div class="container-fluid p-md-5 p-2 pb-5">
         <h2 class="display-4 text-uppercase pt-4 fw-bolder">Contacto</h2>
-     
         <div class="row align-items-center justify-content-center mb-5">
-            <form method="post" class="col-md-9 col-lg-7 col-12 fondo rounded-5 p-5">
+            <!-- Formulario -->
+            <form method="post" class="col-md-9 col-lg-7 col-12 fondo rounded-5 py-5 px-4 px-sm-5">
                 {% csrf_token %}
                 
                 {% for field in form %}
-                    <div class="form-floating mb-3 mx-md-2 mx-lg-3">
+                    <div class="form-floating mb-3 mx-md-2 mx-lg-3 mx-1">
                         {{ field|add_class:"form-control" }}
                         {{ field.label_tag }}
                         {% for error in field.errors %}
@@ -165,9 +179,10 @@
                 </div>
             </form>
         </div>
-    </section>
+    </div>
 
-    <section class="container-fluid p-md-5 p-4 pb-5 fondo">
+    <!-- Datos de contacto -->
+    <div class="container-fluid p-md-5 p-4 pb-5 fondo">
         <div class="row gx-4 gx-lg-5">
             <div class="col-md-4 mb-3 mb-md-0">
                 <div class="card py-4 h-100">
@@ -206,10 +221,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <div><iframe id="map-canvas" class="map_part" width="100%"  height="300"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=Tandil Ugalde 2159&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">Powered by <a href="https://www.googlemapsgenerator.com">html embed google maps</a> and <a href="https://skipboregler.com/">skip bo regler</a></iframe></div>
-    
+</section>  
 {% endblock content %}
 
 {% block scripts %}

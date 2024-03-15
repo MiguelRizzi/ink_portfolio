@@ -4,7 +4,7 @@
     <section class="container-fluid p-md-5 p-2 pt-5 h-section">
         
 
-        <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="d-flex justify-content-center align-items-center mt-5  pt-4">
             <div class="col-12 rounded-5 p-sm-5 p-4 fondo">
 
 
@@ -18,7 +18,7 @@
                         {% endif %}
                         <div class="col-12 col-lg-7">
                             <h2 class="link-body-emphasis mb-1 border-bottom">{{object.title}}</h2>
-                        <p class="text-secondary">{{ object.created_on }} por {{ object.user.username}} </p>
+                            <p class="text-secondary">{{ object.created_on }} por {{ object.user.username}} </p>
                             <p class="text-center row">{{object.body}}</p>
                             <div class="d-flex gap-2 justify-content-center">
                                 {% if post.user == request.user %}

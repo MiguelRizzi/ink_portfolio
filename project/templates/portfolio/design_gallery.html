@@ -2,7 +2,7 @@
 
 {% block content %}
     <section id="galeria" class="container-fluid p-md-5 p-2 pt-5 h-section">
-        <h1 class="display-4 text-uppercase title-shadow fw-bolder pt-5">NOBODIES TATTOO</h2>
+        <h1 class="fw-bolder display-5 mb-4 mt-5 text-uppercase pt-4">Nobodies Tattoo</h2>
 
         {% if request.user.is_authenticated %}
             {% include 'components/messages.html' %}
@@ -36,7 +36,7 @@
 
 
         <div class="d-grid gap-3 mt-4">
-            <a href="{% url 'portfolio:design_gallery' %}" class="btn btn-dark"> Ir a Diseños</a>
+            <a href="{% url 'portfolio:tattoo_gallery' %}" class="btn btn-dark"> Ir a tatuajes</a>
         </div>
         {% url 'portfolio:index' as url %}
         {% include 'components/index_back.html' with link=url %}

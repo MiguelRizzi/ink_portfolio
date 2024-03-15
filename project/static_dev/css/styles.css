@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+:root {
+    --swiper-navigation-color: rgb(138, 138, 138);
+    --swiper-pagination-color: rgb(138, 138, 138);
+}
 
 *{
     margin: 0;
@@ -10,7 +14,7 @@
     
 }
 main, .h-section {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 90px);
 }
 body{
     background-position: center; 
@@ -21,12 +25,12 @@ body{
 }
 
 footer{
-    height: 80px;
+    height: 90px;
 }
 
 /* Header y Navbar*/
 .navbar {
-    background-color: rgba(0, 0, 0, 0.01)!important;
+    background-color: rgba(0, 0, 0, 0.6)!important;
     transition: background-color 0.4s ease-in-out;
 }
 .dropdown-menu {
@@ -47,7 +51,7 @@ footer{
     color: rgb(255, 255, 255)!important;
 }
 .nav-link:hover, .dropdown-item:hover, .button-logout:hover{
-    text-shadow: 0 0 14px rgb(141, 48, 64);
+    text-shadow: 0 0 14px rgb(120, 120, 120);
 }
 .icon-avatar{
     height: 35px; 
@@ -59,15 +63,16 @@ footer{
     color:rgb(172, 64, 82)!important;
 }
 
-.header-index{
+header{
     height:95vh;
+}
+.header-index{
     background-image:url("../img/machine-tattoo.jpg");
     object-position:top;
     background-position: top;
     background-size: cover;
 }
 .header-blog{
-    height:95vh;
     background-image:url("../img/tattoo-machine2.jpg");
     object-position:bottom;
     background-position: bottom;
@@ -86,39 +91,12 @@ footer{
     height: 440px;
 }
 
-
 /* Sombras */
 .title-shadow {
     text-shadow: 0 0 8px rgb(35, 34, 34)
 }
 .text-shadow{
     text-shadow:  0 0 4px rgb(35, 34, 34)
-}
-.shadow-primary{
-    box-shadow: 0 0 10px rgb(61, 97, 164);
-}
-.shadow-primary:hover{
-    box-shadow: 0 0 14px rgb(80, 114, 207);
-}
-.shadow-success{
-    box-shadow: 0 0 10px rgb(1, 165, 83);
-}
-.shadow-success:hover{
-    box-shadow: 0 0 14px rgb(1, 171, 86);
-}
-.shadow-pink{
-    box-shadow: 0 0 10px rgb(203, 88, 107);
-}
-.shadow-pink:hover{
-    box-shadow: 0 0 14px rgb(141, 50, 65);
-}
-.btn-outline-info{
-    border-color: rgb(164, 61, 145)!important;
-    color:rgb(255, 255, 255);
-}
-.btn-outline-info:hover{
-    background-color: rgb(199, 78, 98);
-    color:black;
 }
 
 .btn-info{
@@ -135,18 +113,16 @@ footer{
     color:rgb(193, 53, 132)!important;
 }
 
-.btn-outline-warning{
-    border-color:rgb(193, 53, 132)!important;
-}
-.btn-outline-warning:hover{
-    background-color: #E1306C!important;
-}
+
 /* Transform tarjetas y botones */
-.scale, .btn {
+.scale, .scale-div, .btn {
     transition: transform 0.3s;
 }
 .btn:hover, .scale:hover{
     transform: scale(1.03);
+}
+.scale-div:hover{
+    transform: scale(1.004);
 }
 
 /* Formulario */
@@ -179,25 +155,39 @@ footer{
 .image-light{
     background-image:url("../img/fondo-body-light.jpg");
 }
+.card, .btn, input, textarea, select{
+    border-radius: 1px!important;
+}
+
+@media (max-width: 900px) {
+    header{
+        height: 80vh;
+    }
+    
+}
+
+
 @media (max-width: 768px) {
     .dropdown-menu {
         background-color: rgba(63, 63, 63, 0.1)!important;
     }
+    header{
+        height: 75vh;
+    }
 }
 
+
 @media (max-width: 454px) {
-    main, .h-section {
-        min-height: calc(100vh - 130px);
-    }
-    footer{
-        height: 130px;
-    }
     .p-footer{
         font-size: 17px!important;
     }
-
+    header{
+        height: 50vh;
+    }
 }   
 
-.card, .btn, input, textarea, select{
-    border-radius: 1px!important;
+@media (min-width: 992px) {
+    .post-list-image{
+        height: 350px
+    } 
 }

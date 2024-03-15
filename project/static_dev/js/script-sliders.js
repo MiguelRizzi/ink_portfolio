@@ -60,8 +60,8 @@ setTimeout(moveSlider1, 3000);
 setTimeout(moveSlider2, 1500);
 
 // Función para cambiar el texto de los sliders
-squareTattos = document.getElementById('square-tattoos');
-squareDesigns = document.getElementById('square-designs');
+sliderTattos = document.getElementById('slider-tattoos');
+sliderDesigns = document.getElementById('slider-designs');
 h3SliderTattoos = document.getElementById('h3-slider-tattoos');
 h3SliderDesigns = document.getElementById('h3-slider-designs');
 initialTextTatttos = "TATUAJES"
@@ -79,5 +79,5 @@ function changeTextOnHover(element1, element2, initialText, hoverText) {
 }
 
 // Uso de la función para los elementos h3
-changeTextOnHover(squareTattos, h3SliderTattoos, initialTextTatttos, hoverTextTatttos);
-changeTextOnHover(squareDesigns, h3SliderDesigns, initialTextDesigns, hoverTextDesigns);
+changeTextOnHover(sliderTattos, h3SliderTattoos, initialTextTatttos, hoverTextTatttos);
+changeTextOnHover(sliderDesigns, h3SliderDesigns, initialTextDesigns, hoverTextDesigns);
