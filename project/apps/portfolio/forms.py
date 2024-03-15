@@ -5,6 +5,11 @@ class TattooForm(forms.ModelForm):
     class Meta:
         model = models.Tattoo
         fields = '__all__'
+        labels = {
+            "title": "Título",
+            "description": "Descripción",
+            "image": "Imagen",
+        }
 
 class DesignForm(forms.ModelForm):
     class Meta:
@@ -12,8 +17,14 @@ class DesignForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             "available": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-            }
-
+            
+        }
+        labels = {
+            "title": "Título",
+            "description": "Descripción",
+            "image": "Imagen",
+            "available": "Disponible",
+        }
 
 class MessageForm(forms.ModelForm):
     class Meta:
