@@ -15,12 +15,14 @@ class PostDetailView(DetailView):
     
 class PostListView(ListView):
     model = models.Post
+    paginate_by = 5
+
     def get_queryset(self):
         if self.request.GET.get("consult"):
             query = self.request.GET.get("consult")
-            object_list = models.Post.objects.filter(title__icontains=query)
+            object_list = models.Post.objects.filter(title__icontains=query).order_by('-created_on')
         else:
-            object_list = models.Post.objects.all()
+            object_list = models.Post.objects.all().order_by('-id')
         return object_list
 
 class PostCreateView(LoginRequiredMixin, CreateView):

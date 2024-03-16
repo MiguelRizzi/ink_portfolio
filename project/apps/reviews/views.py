@@ -16,13 +16,14 @@ class ReviewDetailView(LoginRequiredMixin, DetailView):
 
 class ReviewListView(LoginRequiredMixin, ListView):
     model = models.Review
+    paginate_by= 20
 
     def get_queryset(self):
         if self.request.GET.get("consult"):
             query = self.request.GET.get("consult")
-            object_list = models.Review.objects.filter(name__icontains=query)
+            object_list = models.Review.objects.filter(name__icontains=query).order_by('-id')
         else:
-            object_list = models.Review.objects.all()
+            object_list = models.Review.objects.all().order_by('-id')
         return object_list
 
 class ReviewCreateView(CreateView):

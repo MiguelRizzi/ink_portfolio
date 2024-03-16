@@ -22,7 +22,7 @@ class indexView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['review_list'] = Review.objects.filter(aproved=True)  
+        context['review_list'] = Review.objects.filter(aproved=True).order_by('-id')  
         context['tattoo_list'] = models.Tattoo.objects.all()
         context['design_list'] = models.Design.objects.all()
         return context
@@ -42,12 +42,14 @@ class TattooDetailView(LoginRequiredMixin, DetailView):
 
 class TattooListView(LoginRequiredMixin, ListView):
     model = models.Tattoo
+    paginate_by = 20
+
     def get_queryset(self):
         if self.request.GET.get("consult"):
             query = self.request.GET.get("consult")
-            object_list = models.Tattoo.objects.filter(title__icontains=query)
+            object_list = models.Tattoo.objects.filter(title__icontains=query).order_by('-id')
         else:
-            object_list = models.Tattoo.objects.all()
+            object_list = models.Tattoo.objects.all().order_by('-id')
         return object_list
 
 class TattooCreateView(LoginRequiredMixin, CreateView):
@@ -84,12 +86,13 @@ class DesignDetailView(LoginRequiredMixin, DetailView):
 
 class DesignListView(LoginRequiredMixin, ListView):
     model = models.Design
+    paginate_by = 20
     def get_queryset(self):
         if self.request.GET.get("consult"):
             query = self.request.GET.get("consult")
-            object_list = models.Design.objects.filter(title__icontains=query)
+            object_list = models.Design.objects.filter(title__icontains=query).order_by('-id')
         else:
-            object_list = models.Design.objects.all()
+            object_list = models.Design.objects.all().order_by('-id')
         return object_list
     
 
@@ -134,6 +137,15 @@ class MessageDetailView(LoginRequiredMixin, DetailView):
 
 class MessageListView(LoginRequiredMixin, ListView):
     model = models.Message
+    paginate_by= 20
+    
+    def get_queryset(self):
+        if self.request.GET.get("consult"):
+            query = self.request.GET.get("consult")
+            object_list = models.Message.objects.filter(name__icontains=query).order_by('-id')
+        else:
+            object_list = models.Message.objects.all().order_by('-id')
+        return object_list
 
     
 class MessageUpdateView(LoginRequiredMixin, View):
@@ -156,15 +168,26 @@ class MessageDeleteView(LoginRequiredMixin, View):
         messages.success(request, "El mensaje se eliminó correctamente.", extra_tags="alert alert-danger")
         return redirect('portfolio:message_list') 
 
-    
-
-    # Galleries
+# Gallery
 class TattooGalleryListView(ListView):
     model = models.Tattoo
-    template_name= 'portfolio/tattoo_gallery.html'
+    paginate_by= 12
 
-
-        
+    def get_queryset(self):
+        if self.request.GET.get("consult"):
+            query = self.request.GET.get("consult")
+            object_list = models.Tattoo.objects.filter(title__icontains=query).order_by('-id')
+        else:
+            object_list = models.Tattoo.objects.all().order_by('-id')
+        return object_list
+    
 class DesignGalleryListView(ListView):
     model = models.Design
-    template_name= 'portfolio/design_gallery.html'
+    paginate_by= 12
+    def get_queryset(self):
+        if self.request.GET.get("consult"):
+            query = self.request.GET.get("consult")
+            object_list = models.Design.objects.filter(title__icontains=query).order_by('-id')
+        else:
+            object_list = models.Design.objects.all().order_by('-id')
+        return object_list

@@ -28,7 +28,8 @@
         {% else %}
             <p class="fs-4 fst-italic">No hay registros ingresados</p>
         {% endif %}
-
+        
+        {% include 'components/pagination.html' %}
         {% block pagination %}
         {% endblock pagination %}
             </section>
