@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="container-fluid p-sm-5 p-0 pt-5 h-section">
+    <section class="container-fluid p-sm-5 p-0 pt-5 h-section fondo">
         <h2 class="fw-bolder display-5 mb-4 mt-5 text-uppercase pt-4">{% block title_2 %}{% endblock %}</h2>       
         {% include 'components/messages.html' %} 
 
@@ -12,7 +12,7 @@
     
             {% block list %}
               
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         {% block table_header %}
                         {% endblock table_header %}

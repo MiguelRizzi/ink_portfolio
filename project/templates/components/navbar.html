@@ -52,7 +52,7 @@
                             <li><a class="dropdown-item title-shadow" href="{% url 'portfolio:message_list' %}">
                                 Mensajes
                                 {% if request.unread_messages_count > 0 %}
-                                    <span class="text-warning p-2"><i class="fas fa-exclamation"></i></span><span>({{ request.unread_messages_count }} no leidos)</span>
+                                    <span class="text-warning p-2"><i class="fas fa-exclamation"></i></span><span>({{ request.unread_messages_count }})</span>
                                 {% endif %}
                             </a></li>
                             <li><hr class="dropdown-divider"></li>

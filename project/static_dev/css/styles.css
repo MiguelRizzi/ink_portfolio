@@ -3,6 +3,7 @@
     --swiper-navigation-color: rgb(138, 138, 138);
     --swiper-pagination-color: rgb(138, 138, 138);
     --bs-pagination-active-bg: rgb(179, 70, 70);
+    --bs-accordion-active-color: rgb(179, 70, 70);
 }
 
 *{
@@ -169,6 +170,19 @@ footer{
     border-radius: 1px!important;
 }
 
+.feature-icon{
+    height: 75px;
+}
+.feature-icon-light{
+    filter: invert(100%);
+}
+
+.accordion-button{
+    --bs-accordion-active-color: rgb(179, 70, 70);
+    --bs-accordion-btn-focus-box-shadow: none;
+}
+
+
 @media (max-width: 900px) {
     header{
         height: 80vh;
@@ -202,9 +216,3 @@ footer{
     } 
 }
 
-.feature-icon{
-    height: 75px;
-}
-.feature-icon-light{
-    filter: invert(100%);
-}
