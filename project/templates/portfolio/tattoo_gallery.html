@@ -17,6 +17,8 @@
             {% endfor %}
         </div>
 
+        {% include 'components/pagination.html' %}
+        
         <div class="d-grid gap-3 mt-4">
             <a href="{% url 'portfolio:design_gallery' %}" class="btn btn-dark"> Ir a diseños</a>
         </div>

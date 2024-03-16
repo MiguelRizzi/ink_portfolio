@@ -172,6 +172,7 @@ class MessageDeleteView(LoginRequiredMixin, View):
 class TattooGalleryListView(ListView):
     model = models.Tattoo
     paginate_by= 12
+    template_name = "portfolio/tattoo_gallery.html"
 
     def get_queryset(self):
         if self.request.GET.get("consult"):
@@ -184,6 +185,8 @@ class TattooGalleryListView(ListView):
 class DesignGalleryListView(ListView):
     model = models.Design
     paginate_by= 12
+    template_name = "portfolio/design_gallery.html"
+    
     def get_queryset(self):
         if self.request.GET.get("consult"):
             query = self.request.GET.get("consult")

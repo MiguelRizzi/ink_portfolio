@@ -2,6 +2,7 @@
 :root {
     --swiper-navigation-color: rgb(138, 138, 138);
     --swiper-pagination-color: rgb(138, 138, 138);
+    --bs-pagination-active-bg: rgb(179, 70, 70);
 }
 
 *{
