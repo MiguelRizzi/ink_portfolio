@@ -30,9 +30,9 @@ const themeIcon = document.querySelector("#icon-theme");
 const themeButton = document.querySelector("#button-theme");
 const elementsForChange = document.querySelectorAll(".fondo");
 const bodyForChange = document.querySelector("body");
+const fondoMainForChange = document.querySelector(".fondo-main");
 const aContactForChange = document.querySelectorAll(".a-contact");
 const cardsForChange = document.querySelectorAll(".card");
-
 
 
 const darkTheme = () => {
@@ -53,6 +53,8 @@ const darkTheme = () => {
     });
     bodyForChange.classList.remove("image-light");
     bodyForChange.classList.add("image-dark");
+    fondoMainForChange.classList.remove("main-light");
+    fondoMainForChange.classList.add("main-dark");
     localStorage.setItem("theme", "dark");
 }
 
@@ -74,6 +76,8 @@ const lightTheme = () => {
     });
     bodyForChange.classList.remove("image-dark");
     bodyForChange.classList.add("image-light");
+    fondoMainForChange.classList.remove("main-dark");
+    fondoMainForChange.classList.add("main-light");
     localStorage.setItem("theme", "light");
 }
 const loadTheme = () => {

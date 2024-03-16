@@ -138,11 +138,11 @@ footer{
 
 .fondo-dark{
     background-image: linear-gradient(180deg, rgba(17, 17, 17, 0.8) 40%, rgba(0, 0, 0, 0.8) 100%);
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgb(0, 0, 0);
 }
 .fondo-light{
     background-image: linear-gradient(180deg, rgba(238, 238, 238, 0.8) 40%, rgba(186, 186, 186, 0.8) 100%);
-    background-color: rgba(245, 245, 245, 0.9);
+    background-color: rgb(245, 245, 245);
 }
 .card-dark{
     background-color: rgba(37, 37, 37, 0.9)!important;
@@ -152,9 +152,17 @@ footer{
 }
 .image-dark{
     background-image:url("../img/fondo-body-dark.jpg");
+    
 }
 .image-light{
     background-image:url("../img/fondo-body-light.jpg");
+}
+.main-dark{
+    background-color: rgba(0, 0, 0, 0.93);
+}
+.main-light{
+    background-color: rgba(255, 255, 255, 0.85);
+
 }
 .card, .btn, input, textarea, select{
     border-radius: 1px!important;
@@ -183,7 +191,7 @@ footer{
         font-size: 17px!important;
     }
     header{
-        height: 50vh;
+        height: 60vh;
     }
 }   
 
