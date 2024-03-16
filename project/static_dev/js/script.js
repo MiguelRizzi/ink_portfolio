@@ -33,6 +33,7 @@ const bodyForChange = document.querySelector("body");
 const fondoMainForChange = document.querySelector(".fondo-main");
 const aContactForChange = document.querySelectorAll(".a-contact");
 const cardsForChange = document.querySelectorAll(".card");
+const iconsForChange = document.querySelectorAll(".feature-icon");
 
 
 const darkTheme = () => {
@@ -51,6 +52,9 @@ const darkTheme = () => {
         card.classList.remove("card-light");
         card.classList.add("card-dark");
     });
+    iconsForChange.forEach((icon) => {
+        icon.classList.remove("feature-icon-light")
+    })
     bodyForChange.classList.remove("image-light");
     bodyForChange.classList.add("image-dark");
     fondoMainForChange.classList.remove("main-light");
@@ -74,6 +78,9 @@ const lightTheme = () => {
         card.classList.remove("card-dark");
         card.classList.add("card-light");
     });
+    iconsForChange.forEach((icon) => {
+        icon.classList.add("feature-icon-light")
+    })
     bodyForChange.classList.remove("image-dark");
     bodyForChange.classList.add("image-light");
     fondoMainForChange.classList.remove("main-dark");

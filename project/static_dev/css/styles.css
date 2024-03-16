@@ -159,10 +159,10 @@ footer{
     background-image:url("../img/fondo-body-light.jpg");
 }
 .main-dark{
-    background-color: rgba(0, 0, 0, 0.93);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 .main-light{
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.9);
 
 }
 .card, .btn, input, textarea, select{
@@ -200,4 +200,11 @@ footer{
     .post-list-image{
         height: 350px
     } 
+}
+
+.feature-icon{
+    height: 75px;
+}
+.feature-icon-light{
+    filter: invert(100%);
 }
