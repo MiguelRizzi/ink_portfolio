@@ -34,7 +34,7 @@ const fondoMainForChange = document.querySelector(".fondo-main");
 const aContactForChange = document.querySelectorAll(".a-contact");
 const cardsForChange = document.querySelectorAll(".card");
 const iconsForChange = document.querySelectorAll(".feature-icon");
-
+const iconsSocialForChange = document.querySelectorAll(".icon-social");
 
 const darkTheme = () => {
     body.setAttribute("data-bs-theme", "dark");
@@ -55,6 +55,10 @@ const darkTheme = () => {
     iconsForChange.forEach((icon) => {
         icon.classList.remove("feature-icon-light")
     })
+    iconsSocialForChange.forEach((icon) => {
+        icon.classList.remove("text-black");
+        icon.classList.add("text-white");
+    });
     bodyForChange.classList.remove("image-light");
     bodyForChange.classList.add("image-dark");
     fondoMainForChange.classList.remove("main-light");
@@ -71,8 +75,8 @@ const lightTheme = () => {
         elemento.classList.add("fondo-light");
     }); 
     aContactForChange.forEach((a) => {
-        a.classList.remove("text-white");
-        a.classList.add("text-black");
+        a.classList.add("text-white");
+        a.classList.remove("text-secondary");
     });
     cardsForChange.forEach((card) => {
         card.classList.remove("card-dark");
@@ -81,6 +85,10 @@ const lightTheme = () => {
     iconsForChange.forEach((icon) => {
         icon.classList.add("feature-icon-light")
     })
+    iconsSocialForChange.forEach((icon) => {
+        icon.classList.remove("text-white");
+        icon.classList.add("text-secondary");
+    });
     bodyForChange.classList.remove("image-dark");
     bodyForChange.classList.add("image-light");
     fondoMainForChange.classList.remove("main-dark");

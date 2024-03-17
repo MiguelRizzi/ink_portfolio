@@ -27,6 +27,16 @@ class indexView(CreateView):
         context['design_list'] = models.Design.objects.all()
         return context
 
+class contactView(CreateView):
+    model = models.Message
+    form_class = forms.MessageForm
+    success_url = reverse_lazy("portfolio:index")
+    template_name="portfolio/contact.html"
+
+    def form_valid(self, form):
+        messages.success(self.request, "El mensaje se envió correctamente.", extra_tags="alert alert-success")
+        return super().form_valid(form)
+
     
 
 class PortfolioManagementView(TemplateView, LoginRequiredMixin):

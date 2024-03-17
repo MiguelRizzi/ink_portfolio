@@ -69,7 +69,7 @@ header{
     background-position: top;
     background-size: cover;
 }
-.header-blog{
+.header-2{
     background-image:url("../img/tattoo-machine2.jpg");
     object-position:bottom;
     background-position: bottom;
@@ -110,7 +110,9 @@ header{
     color:rgb(220, 101, 121)!important;
 
 }
-
+.dropdown-toggle::after {  
+    content: none;
+}
 
 /* Transform tarjetas y botones */
 .scale, .scale-div, .btn {

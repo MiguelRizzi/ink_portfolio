@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav text-uppercase fs-5 fw-bolder">
-                <li class="nav-item scale title-shadow">
+                <li class="nav-item scale title-shadow {% if request.path == '/' %}active{% endif %}">
                     <a class="nav-link" href="
                         {% if request.path == '/' %}
                             #inicio
@@ -16,31 +16,26 @@
                         {% endif %}
                     ">Inicio</a>
                 </li>
-                <li class="nav-item scale title-shadow">
-                    <a class="nav-link" href="
-                        {% if request.path == '/' %}
-                            #galeria
-                        {% else %}
-                            {% url 'portfolio:index' %}#galeria
-                        {% endif %}
-                    ">Galeria</a>
+         
+                <li class="nav-item dropdown {% if request.path == '/design/gallery/' or request.path == '/tatoo/gallery/' %}active{% endif %} ">
+                    <a class="nav-link dropdown-toggle title-shadow scale" id="navbarDropdownMenuLinkGallery" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Galerias
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdownMenuLinkGallery">
+                        <li><a class="dropdown-item title-shadow" href="{% url 'portfolio:tattoo_gallery' %}">Tatuajes</a></li>
+                        <li><a class="dropdown-item title-shadow" href="{% url 'portfolio:design_gallery' %}">Diseños</a></li>       
+                    </ul>
                 </li>
-                <li class="nav-item scale title-shadow">
-                    <a class="nav-link" href="
-                        {% if request.path == '/' %}
-                            #contacto
-                        {% else %}
-                            {% url 'portfolio:index' %}#contacto
-                        {% endif %}
-                    ">Contacto</a>
-                </li>
-                <li class="nav-item scale title-shadow">
+                <li class="nav-item scale title-shadow {% if request.path == '/blog/post/list/' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'blog:post_list' %}#blog">Blog</a>
+                </li>
+                <li class="nav-item scale title-shadow {% if request.path == '/contact/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'portfolio:contact' %}">Contacto</a>
                 </li>
                 
                 {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle username title-shadow" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle username scale title-shadow" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ user.username }}
                             {% if user.avatar.image %}
                                 <img src="{{ user.avatar.image.url }}" class="icon-avatar" alt="Avatar" >
@@ -103,3 +98,4 @@
 </div>
 
  
+
