@@ -104,6 +104,6 @@
 
 {% block pagination %}
   
-    {% url 'portfolio:index' as url %}
+    {% url 'portfolio:management' as url %}
     {% include 'components/index_back.html' with link=url %}    
 {% endblock pagination %}

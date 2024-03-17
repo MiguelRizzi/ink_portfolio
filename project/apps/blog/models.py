@@ -8,7 +8,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     body = models.TextField()
-    file = models.FileField(upload_to='uploads/', blank=True, null=True)
+    file = models.FileField(upload_to='uploads/')
     created_on = models.DateTimeField(auto_now_add=True)  
     last_modified = models.DateTimeField(auto_now=True)  
 

@@ -13,38 +13,64 @@
         <div class="d-flex justify-content-center align-items-center">
             <div class="col-md-9 col-lg-7 col-12 p-sm-5 p-4 fondo rounded-5">
                 <div>
-                  <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="{% static 'img/logo.png' %}" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title">Tatuajes</h3>
-                            <p class="card-text">Administrar tatuajes.</p>
-                            <a href="{% url 'portfolio:tattoo_create' %}" class="btn btn-success">Agregar </a><br>
-                            <a href="{% url 'portfolio:tattoo_list' %}" class="btn btn-info">Ver todos</a> 
-                        </div>
-                      </div>
+
+                 <div class="card">
+                   <div class="card-body">
+                     <h3 class="card-title">Tatuajes</h3>
+                     
+                     <a href="{% url 'portfolio:tattoo_create' %}" class="btn btn-success">
+                       <i class="fas fa-plus-circle"></i> Agregar
+                     </a>
+                     <a href="{% url 'portfolio:tattoo_list' %}" class="btn btn-info">
+                       <i class="fas fa-list"></i> Ver todos
+                     </a> 
+                   </div>
+                 </div>
+                 <div class="card">
+                   <div class="card-body">
+                     <h3 class="card-title">Diseños</h3>
+                     
+                     <a href="{% url 'portfolio:design_create' %}" class="btn btn-success">
+                       <i class="fas fa-plus-circle"></i> Agregar
+                     </a>
+                     <a href="{% url 'portfolio:design_list' %}" class="btn btn-info">
+                       <i class="fas fa-list"></i> Ver todos
+                     </a> 
+                   </div>
+                 </div>
+                 <div class="card">
+                   <div class="card-body">
+                     <h3 class="card-title">Publicaciones</h3>
+                     
+                     <a href="{% url 'blog:post_create' %}" class="btn btn-success">
+                       <i class="fas fa-plus-circle"></i> Agregar
+                     </a>
+                     <a href="{% url 'blog:post_list' %}" class="btn btn-info">
+                       <i class="fas fa-list"></i> Ver todos
+                     </a> 
+                   </div>
+                 </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title">Mensajes</h3>
+                      <a href="{% url 'portfolio:message_list' %}" class="btn btn-info">
+                        <i class="fas fa-envelope"></i> Ver todos
+                        {% if request.unread_messages_count > 0 %}
+                          <span>({{ request.unread_messages_count }})</span>
+                        {% endif %}
+                      </a> 
                     </div>
                   </div>
-        
-                  <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="{% static 'img/logo.png' %}" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title">Diseños</h3>
-                            <p class="card-text">Administrar diseños.</p>
-                            <a href="{% url 'portfolio:design_create' %}" class="btn btn-success">Agregar </a><br>
-                            <a href="{% url 'portfolio:design_list' %}" class="btn btn-info">Ver todos</a> 
-                        </div>
-                      </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title">Comentarios</h3>
+                      <a href="{% url 'reviews:review_list' %}" class="btn btn-info">
+                        <i class="fas fa-comments"></i> Ver todos
+                      </a> 
                     </div>
                   </div>
-                    
+                
+
                 </div>
                 {% url 'portfolio:index' as url %}
                 {% include 'components/index_back.html' with link=url %}

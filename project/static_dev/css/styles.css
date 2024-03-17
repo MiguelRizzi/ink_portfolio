@@ -4,6 +4,8 @@
     --swiper-pagination-color: rgb(138, 138, 138);
     --bs-pagination-active-bg: rgb(179, 70, 70);
     --bs-accordion-active-color: rgb(179, 70, 70);
+    --input-focus-box-shadow: 0 0 0 0.2rem rgba(179, 179, 179, 0.25); 
+    
 }
 
 *{
@@ -14,9 +16,6 @@
     font-optical-sizing: auto;
     font-style: normal;
     
-}
-main {
-    min-height: 100vh;
 }
 body{
     background-position: center; 
@@ -178,7 +177,25 @@ footer{
     --bs-accordion-btn-focus-box-shadow: none;
 }
 
+.form-control:focus {
+    box-shadow: var(--input-focus-box-shadow);
+    border:rgba(99, 99, 99, 0.1) 1px solid;
+  }
+.img-gallery{
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    border:rgb(193, 193, 193) 2px solid;
+}
 
+.div-gallery{
+    transition: transform 0.4s;
+   
+}
+.div-gallery:hover{
+    transform: scale(1.01);
+    overflow: hidden;
+}
 @media (max-width: 900px) {
     header{
         height: 80vh;
@@ -186,14 +203,17 @@ footer{
     
 }
 
-
+.fondo-main{
+    min-height: calc(100vh - 96.6667px);
+}
 @media (max-width: 768px) {
     .dropdown-menu {
         background-color: rgba(63, 63, 63, 0.1)!important;
     }
     header{
-        height: 75vh;
+        height: 70vh;
     }
+
 }
 
 

@@ -1,46 +1,40 @@
 {% extends 'base.html' %}
 
+{% block header %}
+    <header id="blog" class="cover header-blog">
+        <div class="fondo-header">
+            <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
+                <div class="col-lg-8 text-white">
+                    <h1 class="display-2 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo</h1>
+                    <p class="lead fw-bolder text-shadow text-center text-md-start fs-3">Galería de diseños</p>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+
 {% block content %}
-    <section id="galeria" class="container-fluid p-md-5 p-2 pt-5 h-section">
-        <h1 class="fw-bolder display-5 mb-4 mt-5 text-uppercase pt-4">Nobodies Tattoo</h2>
-
-        {% if request.user.is_authenticated %}
-            {% include 'components/messages.html' %}
-        {% endif %}    
-        
-        <div> 
-            <h2 class="fw-bolder mt-5 text-uppercase">Disponibles</h2>
-        
-            <div class="d-flex flex-wrap gap-3 justify-content-center rounded-5 p-sm-5 p-4 mb-5 mb-md-0 fondo">
+    <section id="galeria" class="container-fluid p-md-5 p-2 pt-5 h-section">            
+            <div class="row rounded-5 p-sm-5 p-4 fondo">
                 {% for image in object_list %}
-                    {% if image.available %}
-                        <div class="">
-                            <img src="{{ image.image.url}}" alt="{{ image.title}}" style="width: 300px;">
-                        </div>   
-                    {% endif %}
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2 position-relative div-gallery">
+                        {% if image.available %}  
+                            <p class="px-1 position-absolute top-75 end-75 fw-bolder text-success">Disponible</p>
+                        {% endif %}
+                        <img src="{{ image.image.url}}" alt="{{ image.title}}" class="img-fluid img-gallery">
+                    </div>
                 {% endfor %}
-            </div>
-        </div>
-        <div> 
-            <hr>
-            <div class="d-flex flex-wrap gap-3 justify-content-center rounded-5 p-sm-5 p-4 mb-5 mb-md-0 fondo">
-                {% for image in object_list %}
-                    {% if not image.available %}
-                        <div class="">
-                            <img src="{{ image.image.url}}" alt="{{ image.title}}" style="width: 300px;">
-                        </div>   
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
 
-        {% include 'components/pagination.html' %}
+                <div>
+                    {% include 'components/pagination.html' %}
+                </div>
+                <div class="d-grid gap-3 mt-4">
+                    <a href="{% url 'portfolio:tattoo_gallery' %}" class="btn btn-info"> Ir a tatuajes</a>
+                </div>
+                {% url 'portfolio:index' as url %}
+                {% include 'components/index_back.html' with link=url %}
+            </div>
 
-        <div class="d-grid gap-3 mt-4">
-            <a href="{% url 'portfolio:tattoo_gallery' %}" class="btn btn-dark"> Ir a tatuajes</a>
-        </div>
-        {% url 'portfolio:index' as url %}
-        {% include 'components/index_back.html' with link=url %}
     </section>
 
     

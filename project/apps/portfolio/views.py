@@ -190,7 +190,7 @@ class DesignGalleryListView(ListView):
     def get_queryset(self):
         if self.request.GET.get("consult"):
             query = self.request.GET.get("consult")
-            object_list = models.Design.objects.filter(title__icontains=query).order_by('-id')
+            object_list = models.Design.objects.filter(title__icontains=query).order_by('-available','-id')
         else:
-            object_list = models.Design.objects.all().order_by('-id')
+            object_list = models.Design.objects.all().order_by('-available','-id')
         return object_list
