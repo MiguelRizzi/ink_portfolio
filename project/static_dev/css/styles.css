@@ -225,6 +225,11 @@ footer{
         height: 60vh;
     }
 }   
+@media (max-width: 350px) {
+    header{
+        height: 50vh;
+    }
+}
 
 @media (min-width: 992px) {
     .post-list-image{
