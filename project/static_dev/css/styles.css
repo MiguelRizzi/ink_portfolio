@@ -15,8 +15,8 @@
     font-style: normal;
     
 }
-main, .h-section {
-    min-height: calc(100vh - 90px);
+main {
+    min-height: 100vh;
 }
 body{
     background-position: center; 
@@ -24,10 +24,6 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: rgba(255, 255, 255, 0.5);
-}
-
-footer{
-    height: 90px;
 }
 
 /* Header y Navbar*/
@@ -212,7 +208,8 @@ footer{
 
 @media (min-width: 992px) {
     .post-list-image{
-        height: 350px
+        height: 350px;
+        object-fit: cover;
     } 
 }
 

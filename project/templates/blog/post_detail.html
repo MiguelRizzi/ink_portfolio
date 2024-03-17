@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 
 {% block content %}
     <section class="container-fluid p-md-5 p-2 pt-5 h-section">
@@ -11,11 +12,16 @@
                 <article class="blog-post container py-4 border-bottom">
                     <div class="row">
                         
-                        {% if object.file %}
-                            <div class="col-12 col-lg-5 ">
-                                <img src="{{ object.file.url}}" alt="{{object.title}}" class="img-fluid "/>
-                            </div>  
-                        {% endif %}
+                        <div class="col-12 col-lg-5 ">
+                            {% with file_type=object.file|determine_file_type %}
+                                {% if file_type == 'image' %}
+                                    <img src="{{ object.file.url}}" alt="{{object.title}}" class="img-fluid "/>
+                                {% elif file_type == 'video' %}
+                                    <video src="{{ object.file.url}}"  class="w-100" controls></video>
+                                {% endif %}                                
+                            {% endwith %}
+                        </div>  
+                        
                         <div class="col-12 col-lg-7">
                             <h2 class="link-body-emphasis mb-1 border-bottom">{{object.title}}</h2>
                             <p class="text-secondary">{{ object.created_on }} por {{ object.user.username}} </p>

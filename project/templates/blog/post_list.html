@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load custom_filters %}
 
 {% block header %}
     <header id="blog" class="cover header-blog">
@@ -53,7 +53,13 @@
 
                             <div class="card text-start rounded-1" style=" border:none;">
                                 {% if post.file %} 
-                                    <img src="{{ post.file.url }}" class="card-img-top object-fit-cover post-list-image" alt="{{ post.title }}"/>
+                                    {% with file_type=post.file|determine_file_type %}
+                                        {% if file_type == 'image' %}
+                                            <img src="{{ post.file.url }}" class="card-img-top object-fit-cover post-list-image" alt="{{ post.title }}"/>
+                                        {% elif file_type == 'video' %}
+                                            <video src="{{ post.file.url }}" class="card-img-top post-list-image" controls></video>
+                                        {% endif %}
+                                    {% endwith %}
                                 {% endif %}
                                 <div class="card-body">
                                     <p class="text-secondary">
