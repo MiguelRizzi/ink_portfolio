@@ -32,7 +32,7 @@ class ReviewCreateView(CreateView):
     success_url = reverse_lazy("portfolio:index")
 
     def form_valid(self, form):
-        messages.success(self.request, "La reseña se guardó correctamente.", extra_tags="alert alert-success")
+        messages.success(self.request, "El comentario se guardó correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     
 class ReviewUpdateView(LoginRequiredMixin, View):
@@ -40,10 +40,10 @@ class ReviewUpdateView(LoginRequiredMixin, View):
         review = get_object_or_404(models.Review, pk=pk)
         if review.aproved:
             review.aproved = False
-            messages.success(request, "La reseña se marcó como no aprobada.", extra_tags="alert alert-danger")
+            messages.success(request, "El comentario se marcó como no aprobado.", extra_tags="alert alert-danger")
         else:
             review.aproved = True
-            messages.success(request, "La reseña se marcó como aprobada.", extra_tags="alert alert-success")
+            messages.success(request, "El comentario se marcó como aprobado.", extra_tags="alert alert-success")
         review.save()
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -51,5 +51,5 @@ class ReviewDeleteView(LoginRequiredMixin, View):
     def get(self, request, pk):
         review = get_object_or_404(models.Review, pk=pk)
         review.delete()
-        messages.success(request, "La reseña se eliminó correctamente.", extra_tags="alert alert-success")
+        messages.success(request, "El comentario se eliminó correctamente.", extra_tags="alert alert-success")
         return redirect('reviews:review_list')

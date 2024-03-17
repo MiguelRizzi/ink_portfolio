@@ -203,7 +203,7 @@ footer{
     
 }
 
-.fondo-main{
+.fondo-main, .h-section{
     min-height: calc(100vh - 96.6667px);
 }
 @media (max-width: 768px) {
