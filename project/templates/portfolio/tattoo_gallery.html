@@ -19,7 +19,7 @@
 
         <div class="row rounded-5 p-sm-5 p-4 fondo">
             {% for image in object_list %}
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2 div-gallery">
                     <img src="{{ image.image.url}}" alt="{{ image.title}}" class="img-fluid img-gallery">
                 </div>
             {% endfor %}
