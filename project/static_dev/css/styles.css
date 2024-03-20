@@ -5,9 +5,7 @@
     --bs-pagination-active-bg: rgb(179, 70, 70);
     --bs-accordion-active-color: rgb(179, 70, 70);
     --input-focus-box-shadow: 0 0 0 0.2rem rgba(179, 179, 179, 0.25); 
-    
 }
-
 *{
     margin: 0;
     padding: 0;
@@ -15,7 +13,6 @@
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    
 }
 body{
     background-position: center; 
@@ -33,9 +30,12 @@ body{
 .dropdown-menu {
     background-color: rgb(61, 61, 61)!important;
 }
-    
-    
-
+.dropdown-toggle::after {  
+    content: none;
+}
+.dropdown-menu-dark{
+    --bs-dropdown-link-active-bg: rgb(143, 53, 53)!important;
+}
 .navbar-scroll {
     background-color: rgb(31, 31, 31)!important;
     background-image: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 40%, rgba(10, 10, 10, 0.8) 100%)!important; /* Reemplaza "your-color" con el color deseado */
@@ -59,7 +59,6 @@ body{
 .username{
     color:rgb(172, 64, 82)!important;
 }
-
 header{
     height:95vh;
 }
@@ -88,16 +87,15 @@ header{
     height: 440px;
 }
 
-/* Sombras */
+/* Transform tarjetas y botones */
 .title-shadow {
     text-shadow: 0 0 8px rgb(35, 34, 34)
 }
 .text-shadow{
     text-shadow:  0 0 4px rgb(35, 34, 34)
 }
-
 .btn-info{
-    border-color: rgb(164, 61, 145)!important;
+    border-color: rgb(142, 51, 66)!important;
     color:rgb(255, 255, 255);
     background-color:rgb(172, 64, 82);
     --bs-btn-active-bg:rgb(172, 64, 82)!important;
@@ -108,13 +106,7 @@ header{
 }
 .text-info{
     color:rgb(220, 101, 121)!important;
-
 }
-.dropdown-toggle::after {  
-    content: none;
-}
-
-/* Transform tarjetas y botones */
 .scale, .scale-div, .btn {
     transition: transform 0.3s;
 }
@@ -130,11 +122,12 @@ textarea{
     height: 150px !important;
     resize: none !important;
 }
-
-footer{
-    background-color: rgb(21, 21, 21)
+.form-control:focus {
+    box-shadow: var(--input-focus-box-shadow);
+    border:rgba(99, 99, 99, 0.1) 1px solid;
 }
 
+/* Temas */
 .fondo-dark{
     background-image: linear-gradient(180deg, rgba(17, 17, 17, 0.8) 40%, rgba(0, 0, 0, 0.8) 100%);
     background-color: rgb(0, 0, 0);
@@ -151,7 +144,6 @@ footer{
 }
 .image-dark{
     background-image:url("../img/fondo-body-dark.jpg");
-    
 }
 .image-light{
     background-image:url("../img/fondo-body-light.jpg");
@@ -161,12 +153,10 @@ footer{
 }
 .main-light{
     background-color: rgba(255, 255, 255, 0.9);
-
 }
 .card, .btn, input, textarea, select{
     border-radius: 1px!important;
 }
-
 .feature-icon{
     height: 75px;
 }
@@ -174,25 +164,21 @@ footer{
     filter: invert(100%);
 }
 
+/* Preguntas */
 .accordion-button{
     --bs-accordion-active-color: rgb(179, 70, 70);
     --bs-accordion-btn-focus-box-shadow: none;
 }
 
-.form-control:focus {
-    box-shadow: var(--input-focus-box-shadow);
-    border:rgba(99, 99, 99, 0.1) 1px solid;
-  }
+/* Galerias */
 .img-gallery{
     width: 100%;
     height: auto;
     border-radius: 2px;
     border:rgb(193, 193, 193) 2px solid;
 }
-
 .div-gallery{
     transition: transform 0.4s;
-   
 }
 .div-gallery:hover{
     transform: scale(1.01);
@@ -202,9 +188,7 @@ footer{
     header{
         height: 80vh;
     }
-    
 }
-
 .fondo-main, .h-section{
     min-height: calc(100vh - 96.6667px);
 }
@@ -215,9 +199,7 @@ footer{
     header{
         height: 70vh;
     }
-
 }
-
 
 @media (max-width: 454px) {
     .p-footer{
@@ -229,7 +211,7 @@ footer{
 }   
 @media (max-width: 350px) {
     header{
-        height: 50vh;
+        height: 40vh;
     }
 }
 

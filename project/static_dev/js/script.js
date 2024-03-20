@@ -75,8 +75,8 @@ const lightTheme = () => {
         elemento.classList.add("fondo-light");
     }); 
     aContactForChange.forEach((a) => {
-        a.classList.add("text-white");
-        a.classList.remove("text-secondary");
+        a.classList.remove("text-white");
+        a.classList.add("text-black");
     });
     cardsForChange.forEach((card) => {
         card.classList.remove("card-dark");
@@ -87,7 +87,7 @@ const lightTheme = () => {
     })
     iconsSocialForChange.forEach((icon) => {
         icon.classList.remove("text-white");
-        icon.classList.add("text-secondary");
+        icon.classList.add("text-black");
     });
     bodyForChange.classList.remove("image-dark");
     bodyForChange.classList.add("image-light");

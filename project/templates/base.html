@@ -41,7 +41,12 @@
         </div>
     </main>
 
-    {% include 'components/footer.html' %}
+    <footer class="fondo">
+        {% block footer %}   
+        {% endblock footer %}
+
+        {% include 'components/footer.html' %}
+    </footer>
 
     <!-- My scripts -->
     <script src="{% static 'js/script.js' %}"></script>
