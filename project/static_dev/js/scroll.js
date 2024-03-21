@@ -33,16 +33,18 @@ function ocultar(elem) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    gsap.registerPlugin(ScrollTrigger);
+    if (window.matchMedia("(min-width: 1200px)").matches) {
+        gsap.registerPlugin(ScrollTrigger);
 
-    // ScrollTriger para cada elemento con la clase .revelar    
-    gsap.utils.toArray(".revelar").forEach(function (elem) {
-        ScrollTrigger.create({
-            trigger: elem,
-            markers: false,
-            onEnter: function () { direccionAnimacion(elem) }, // anima el elemento al entrar en la vista
-            onEnterBack: function () { direccionAnimacion(elem, -1) }, // anima el elemento al retroceder a la vista
-            onLeave: function () { ocultar(elem) } // oculta el elemento al salir de la vista
+        // ScrollTriger para cada elemento con la clase .revelar     
+        gsap.utils.toArray(".revelar").forEach(function (elem) {
+            ScrollTrigger.create({
+                trigger: elem,
+                markers: false,
+                onEnter: function () { direccionAnimacion(elem) }, // anima el elemento al entrar en la vista
+                onEnterBack: function () { direccionAnimacion(elem, -1) }, // anima el elemento al retroceder a la vista
+                onLeave: function () { ocultar(elem) } // oculta el elemento al salir de la vista
+            });
         });
-    });
+    }
 });
