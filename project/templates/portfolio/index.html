@@ -12,7 +12,7 @@
 {% block header %}
     <header id="inicio" class="header-index">
         <div class="fondo-header">
-            <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
+            <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75 revelar izquierda">
                 <div class="col-lg-8 text-white">
                     <h1 class="display-2 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo</h1>
                     <p class="lead fw-bolder text-shadow text-center text-md-start fs-3">Neotradicional / Anime</p>
@@ -31,7 +31,7 @@
         {% include 'components/messages.html' %}
         <div class="row align-items-center justify-content-center pt-4">
             <!--Sobre mi-->
-            <div class="col-md-7 col-12">
+            <div class="col-md-7 col-12 revelar izquierda">
                 <h2 class="display-4 text-uppercase fw-bolder">Sobre mi</h2>
                 <div class="rounded-5 p-sm-5 p-4 mb-4 mb-md-0 fondo">
                     <p class="lead p-sobre-mi pb-2">
@@ -42,13 +42,13 @@
                     </a>                   
                 </div>
             </div>
-            <div class="col-md-5 col-12 border-dark mb-4 mb-md-0 div-foto p-sm-0 p-4">
+            <div class="col-md-5 col-12 border-dark mb-4 mb-md-0 div-foto p-sm-0 p-4 revelar derecha">
                 <img class="w-90 w-md-100 img-thumbnail foto shadow-secondary" src="{% static 'img/tatuando.jpg' %}" alt="Foto Tatuando">
             </div>
 
             <!-- Servicios -->
             <div class="container px-4 py-4" id="featured-3">
-                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 revelar">
                     <div class="feature col">
                         <div class="feature-icon">
                             <img src="{% static 'img/tattoos.png' %}" alt="Tatuajes" class="feature-icon" style="filter:invert(100%);">
@@ -76,7 +76,7 @@
     </div>
 
     <!-- Comentarios -->
-    <div class="container-fluid p-5 px-4 px-sm-5">
+    <div class="container-fluid p-5 px-4 px-sm-5 revelar">
         <h3 class="display-4 text-uppercase fw-bolder">Comentarios</h2>
         <div class="slide-container swiper w-100">
             <div class="slide-content review overflow-hidden">
@@ -106,16 +106,16 @@
 <!-- Sección Galerias -->
 <section id="galeria">
     <div class="container-fluid p-md-5 p-2 pb-5 fondo">
-        <h2 class="display-4 text-uppercase fw-bolder">Galerias</h2>
+        <h2 class="display-4 text-uppercase fw-bolder revelar izquierda">Galerias</h2>
         <div class="row align-items-center justify-content-center pt-4"> 
 
             <!-- Slider tatuajes -->
             <div class="swiper-container swiper-container-gallery slider1 col-md-6 col-12 mb-4 mb-md-0 scale-div slider-tattoos">
-                <div class="swiper-wrapper swiper-wrapper-gallery">
+                <div class="swiper-wrapper swiper-wrapper-gallery revelar izquierda">
                     {% for tattoo in tattoo_list %}
                     <div class="swiper-slide swiper-slide-gallery">
                         <a href="{% url 'portfolio:tattoo_gallery' %}">
-                            <h3 id="h3-slider-tattoos" class="fs-1">VER TATUAJES</h3>
+                            <h3 id="h3-slider-tattoos" class="fs-1">TATUAJES</h3>
                             <div id="square-tattoos" class="square">
                                 <div></div>
                             </div>
@@ -127,12 +127,12 @@
             </div>
             
             <!-- Slider diseños -->
-            <div class="swiper-container swiper-container-gallery slider2 col-md-6 col-12 scale-div slider-desgins">
-                <div class="swiper-wrapper swiper-wrapper-gallery">
+            <div class="swiper-container swiper-container-gallery slider2 col-md-6 col-12 scale-div slider-desgins ">
+                <div class="swiper-wrapper swiper-wrapper-gallery revelar derecha">
                     {% for design in design_list %}
                     <div class="swiper-slide swiper-slide-gallery">
                         <a href="{% url 'portfolio:design_gallery' %}">
-                            <h3 id="h3-slider-designs" class="fs-1">VER DISEÑOS</h3>
+                            <h3 id="h3-slider-designs" class="fs-1">DISEÑOS</h3>
                             <div id="square-designs" class="square">
                                 <div></div>
                             </div>
@@ -148,7 +148,7 @@
 
 <!-- Preguntas frecuentes-->
 <section id="preguntas">
-    <div class="container-fluid p-md-5 p-2 pb-5 fondo">
+    <div class="container-fluid p-md-5 p-2 pb-5 fondo revelar izquierda">
         <h2 class="display-4 text-uppercase fw-bolder">Preguntas frecuentes</h2>
         <div class="accordion text-start pt-4" id="accordionQuestions">
 
@@ -266,10 +266,10 @@
 <!-- Sección contacto -->
 <section id="contacto">  
     <div class="container-fluid p-md-5 p-2 pb-5">
-        <h2 class="display-4 text-uppercase pt-4 fw-bolder">Contacto</h2>
+        <h2 class="display-4 text-uppercase pt-4 fw-bolder evelar derecha">Contacto</h2>
         <div class="row align-items-center justify-content-center mb-5">
             <!-- Formulario -->
-            <form method="post" class="col-md-9 col-lg-7 col-12 fondo rounded-5 py-5 px-4 px-sm-5">
+            <form method="post" class="col-md-9 col-lg-7 col-12 fondo rounded-5 py-5 px-4 px-sm-5 revelar derecha">
                 {% csrf_token %}
                 
                 {% for field in form %}
@@ -299,7 +299,7 @@
 
     <!-- Datos de contacto -->
     <div class="container-fluid p-md-5 p-4 pb-5 fondo">
-        <div class="row gx-4 gx-lg-5">
+        <div class="row gx-4 gx-lg-5 revelar">
             <div class="col-md-4 mb-3 mb-md-0">
                 <div class="card py-4 h-100">
                     <div class="card-body text-center">

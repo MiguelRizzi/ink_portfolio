@@ -5,7 +5,7 @@
 {% block header %}
     <header id="blog" class="cover header-2">
         <div class="fondo-header">
-            <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
+            <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75 revelar izquierda">
                 <div class="col-lg-8 text-white">
                     <h1 class="display-2 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo</h1>
                     <p class="lead fw-bolder text-shadow text-center text-md-start fs-3">Blog de tatuaje</p>
@@ -20,8 +20,8 @@
         {% include 'components/messages.html' %}
         <div class="rounded-5 p-sm-5 p-4 mb-5 mb-md-0 row fondo">
 
-            <div class="col-12 col-lg-6 order-lg-2 ">
-                <div class="card mb-4">
+            <div class="col-12 col-lg-6 order-lg-2">
+                <div class="card mb-4 revelar">
                     <div class="card-header fw-semibold">Buscar publicaciones</div>
                     <div class="card-body">   
                         <form class="input-group" action="{% url 'blog:post_list' %}" method="get">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                
-                <div class="card mb-4">
+                <div class="card mb-4 revelar">
                     <div class="card-header fw-semibold">¡Descubre el Arte en la Piel!</div>
                     <div class="card-body pt-4 pb-5">
                         <p><strong>Nobodies Tattoo</strong> es un espacio donde la creatividad y la expresión personal se fusionan para crear auténticas obras maestras en la piel. Aquí encontrarás todo lo que necesitas saber sobre tatuajes, desde las últimas tendencias hasta consejos para el cuidado posterior. Mantente al día con las últimas novedades en el mundo del tatuaje y no te pierdas las promociones especiales. Entérate aquí de descuentos en diseños seleccionados y de eventos exclusivos para clientes. ¡Esperamos verte pronto en <strong>Nobodies Tattoo</strong>! 🌟🔥🖤</p>
@@ -51,7 +51,7 @@
             
                         <div class="col-12 col-lg-6 mb-4 order-{{forloop.counter}}">
 
-                            <div class="card text-start rounded-1" style=" border:none;">
+                            <div class="card text-start rounded-1 revelar" style=" border:none;">
                                 {% if post.file %} 
                                     {% with file_type=post.file|determine_file_type %}
                                         {% if file_type == 'image' %}

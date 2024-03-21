@@ -3,7 +3,7 @@
 {% block header %}
     <header id=galeria class="cover header-2">
         <div class="fondo-header">
-            <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75">
+            <div class="px-5 d-flex justify-content-md-start justify-content-center align-items-end h-75 revelar izquierda">
                 <div class="col-lg-8 text-white">
                     <h1 class="display-2 fw-bolder title-shadow text-center text-md-start">Nobodies Tattoo</h1>
                     <p class="lead fw-bolder text-shadow text-center text-md-start fs-3">Galería de diseños</p>
@@ -17,7 +17,7 @@
     <section id="galeria" class="container-fluid p-md-5 p-2 pt-5 h-section">            
             <div class="row rounded-5 p-sm-5 p-4 fondo">
                 {% for image in object_list %}
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2 position-relative div-gallery">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2 position-relative div-gallery revelar">
                         {% if image.available %}  
                             <p class="px-1 position-absolute top-75 end-75 fw-bolder text-success">Disponible</p>
                         {% endif %}

@@ -74,7 +74,7 @@ const lightTheme = () => {
         icon.classList.remove("text-white");
         icon.classList.add("text-black");
     });
-    activeForChange.forEach((active) => {
+activeForChange.forEach((active) => {
         active.classList.remove("active-light");
         active.classList.add("active-dark");
     })
