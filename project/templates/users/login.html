@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block content %}
     <section class="container-fluid p-md-5 p-2 pt-5 h-section">
-
-        <h2 class="fw-bolder display-5 mb-4 mt-5 text-uppercase pt-4">Iniciar Sesión</h2>
-
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="col-md-9 col-lg-7 col-12 rounded-5 p-sm-5 p-4 fondo">
+        <div class="d-flex justify-content-center align-items-center mt-5">
+            <div class="col-md-9 col-lg-7 col-12 rounded-5 p-sm-5 p-4 mt-5 fondo">
+                <img src="{% static 'img/logo.png' %}" alt="Nobodies Tattoo" style="height: 150px;">
                 <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
                     {% csrf_token %}
                     
