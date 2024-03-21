@@ -1,14 +1,14 @@
 {% load static %}
 <nav id="main-nav" class="navbar navbar-expand-md fixed-top">
     <div class="container-fluid px-5">
-        <a class="navbar-brand fs-4 fw-bolder scale" href="{% url 'portfolio:index' %}"><img src="{% static 'img/logo.png' %}" alt="Nobodies Tattoo" style="height: 54px"></a>
+        <a class="navbar-brand fs-4 fw-bolder scale" href="{% url 'portfolio:index' %}"><img src="{% static 'img/logo.png' %}" class="navbar-icon" alt="Nobodies Tattoo" style="height: 50px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav text-uppercase fs-5 fw-bolder">
-                <li class="nav-item scale title-shadow {% if request.path == '/' %}active{% endif %}">
-                    <a class="nav-link" href="
+                <li class="nav-item scale {% if request.path == '/' %}active{% endif %}">
+                    <a class="nav-link text" href="
                         {% if request.path == '/' %}
                             #inicio
                         {% else %}
@@ -18,24 +18,24 @@
                 </li>
          
                 <li class="nav-item dropdown {% if request.path == '/design/gallery/' or request.path == '/tatoo/gallery/' %}active{% endif %} ">
-                    <a class="nav-link dropdown-toggle title-shadow scale" id="navbarDropdownMenuLinkGallery" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle scale text" id="navbarDropdownMenuLinkGallery" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Galerias
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdownMenuLinkGallery">
-                        <li><a class="dropdown-item title-shadow" href="{% url 'portfolio:tattoo_gallery' %}">Tatuajes</a></li>
-                        <li><a class="dropdown-item title-shadow" href="{% url 'portfolio:design_gallery' %}">Diseños</a></li>       
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLinkGallery">
+                        <li><a class="dropdown-item text" href="{% url 'portfolio:tattoo_gallery' %}">Tatuajes</a></li>
+                        <li><a class="dropdown-item text" href="{% url 'portfolio:design_gallery' %}">Diseños</a></li>       
                     </ul>
                 </li>
-                <li class="nav-item scale title-shadow {% if request.path == '/blog/post/list/' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'blog:post_list' %}#blog">Blog</a>
+                <li class="nav-item scale {% if request.path == '/blog/post/list/' %}active{% endif %}">
+                    <a class="nav-link text" href="{% url 'blog:post_list' %}#blog">Blog</a>
                 </li>
-                <li class="nav-item scale title-shadow {% if request.path == '/contact/' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'portfolio:contact' %}">Contacto</a>
+                <li class="nav-item scale {% if request.path == '/contact/' %}active{% endif %}">
+                    <a class="nav-link text" href="{% url 'portfolio:contact' %}">Contacto</a>
                 </li>
                 
                 {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle username scale title-shadow" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle username scale text" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ user.username }}
                             {% if user.avatar.image %}
                                 <img src="{{ user.avatar.image.url }}" class="icon-avatar" alt="Avatar" >
@@ -43,35 +43,35 @@
                                 <img src="{% static 'img/avatar-default.png' %}" class="icon-avatar" alt="Avatar">
                             {% endif %}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item title-shadow" href="{% url 'portfolio:message_list' %}">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item text" href="{% url 'portfolio:message_list' %}">
                                 Mensajes
                                 {% if request.unread_messages_count > 0 %}
                                     <span class="text-warning p-2"><i class="fas fa-exclamation"></i></span><span>({{ request.unread_messages_count }})</span>
                                 {% endif %}
                             </a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item title-shadow" href="{% url 'reviews:review_list' %}">Comentarios</a></li>
+                            <li><a class="dropdown-item text" href="{% url 'reviews:review_list' %}">Comentarios</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item title-shadow" href="{% url 'portfolio:management' %}">Administración</a></li>
+                            <li><a class="dropdown-item text" href="{% url 'portfolio:management' %}">Administración</a></li>
                             <li><hr class="dropdown-divider"></li>
                             {% if not user.avatar %}
-                            <li><a class="dropdown-item title-shadow" href="{% url 'users:avatar_create' %}">Mi avatar</a></li>
+                            <li><a class="dropdown-item text" href="{% url 'users:avatar_create' %}">Mi avatar</a></li>
                             {% else %}
-                            <li><a class="dropdown-item title-shadow" href="{% url 'users:avatar_detail' user.avatar.pk %}">Mi avatar</a></li>
+                            <li><a class="dropdown-item text" href="{% url 'users:avatar_detail' user.avatar.pk %}">Mi avatar</a></li>
                             {% endif %}
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item title-shadow" href="{% url 'users:change_password' %}">Cambiar contraseña</a></li>
+                            <li><a class="dropdown-item text" href="{% url 'users:change_password' %}">Cambiar contraseña</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <button type="submit" class="dropdown-item button-logout text-uppercase title-shadow" data-bs-toggle="modal" data-bs-target="#logoutModal">Cerrar sesión</button>      
+                                <button type="submit" class="dropdown-item text button-logout text text-uppercase" data-bs-toggle="modal" data-bs-target="#logoutModal">Cerrar sesión</button>      
                             </li>
                         </ul>
                     </li>
                 {% endif %}
             </ul>
         </div>
-        <button id="button-theme" class="btn btn-outline-light rounded-3"><i id="icon-theme" class="bi bi-moon-fill"></i></button>
+        <button id="button-theme" class="btn btn-dark rounded-3"><i id="icon-theme" class="bi bi-moon-fill"></i></button>
     </div>
 </nav> 
 

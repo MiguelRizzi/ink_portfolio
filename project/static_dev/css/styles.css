@@ -23,30 +23,35 @@ body{
 }
 
 /* Header y Navbar*/
-.navbar {
-    background-color: rgba(0, 0, 0, 0.5)!important;
+.navbar{
     transition: background-color 0.4s ease-in-out;
+
 }
-.dropdown-menu {
-    background-color: rgb(61, 61, 61)!important;
+.navbar-dark {
+    background-color: rgba(0, 0, 0, 0.9)!important;
 }
+.navbar-light {
+    background-color: rgba(255, 255, 255, 0.9)!important;
+}
+
 .dropdown-toggle::after {  
     content: none;
 }
-.dropdown-menu-dark{
+.dropdown-menu{
     --bs-dropdown-link-active-bg: rgb(143, 53, 53)!important;
 }
 .navbar-scroll {
-    background-color: rgb(31, 31, 31)!important;
-    background-image: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 40%, rgba(10, 10, 10, 0.8) 100%)!important; /* Reemplaza "your-color" con el color deseado */
+    background-color: rgba(0, 0, 0, 0.95)!important;
     box-shadow: 0 0 6px rgb(0, 0, 0);
 }
-.active{
+
+.active-light{
     text-decoration: underline rgb(255, 255, 255) 3px ;
 }
-.nav-link, .dropdown-item, .button-logout{
-    color: rgb(255, 255, 255)!important;
+.active-dark{
+    text-decoration: underline rgb(0, 0, 0) 3px ;
 }
+
 .nav-link:hover, .dropdown-item:hover, .button-logout:hover{
     text-shadow: 0 0 14px rgb(120, 120, 120);
 }
@@ -116,6 +121,9 @@ header{
 .scale-div:hover{
     transform: scale(1.004);
 }
+.btn-dark{
+    border: rgb(91, 90, 90) 1.5px solid!important;
+}
 
 /* Formulario */
 textarea{
@@ -136,7 +144,7 @@ textarea{
     background-image: linear-gradient(180deg, rgba(238, 238, 238, 0.8) 40%, rgba(186, 186, 186, 0.8) 100%);
     background-color: rgb(245, 245, 245);
 }
-.card-dark{
+.card-dark, .bnt-dark{
     background-color: rgba(37, 37, 37, 0.9)!important;
 }
 .card-light{
@@ -160,7 +168,7 @@ textarea{
 .feature-icon{
     height: 75px;
 }
-.feature-icon-light{
+.feature-icon-light, .navbar-icon-light{
     filter: invert(100%);
 }
 

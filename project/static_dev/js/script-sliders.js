@@ -58,26 +58,3 @@ setTimeout(moveSlider2, 3000);
 // Iniciar el movimiento de los sliders
 setTimeout(moveSlider1, 3000);
 setTimeout(moveSlider2, 1500);
-
-// Función para cambiar el texto de los sliders
-sliderTattos = document.getElementById('slider-tattoos');
-sliderDesigns = document.getElementById('slider-designs');
-h3SliderTattoos = document.getElementById('h3-slider-tattoos');
-h3SliderDesigns = document.getElementById('h3-slider-designs');
-initialTextTatttos = "TATUAJES"
-initialTextDesigns = "DISEÑOS"
-hoverTextTatttos = "VER TATUAJES"
-hoverTextDesigns = "VER DISEÑOS"
-
-function changeTextOnHover(element1, element2, initialText, hoverText) {
-  element1.addEventListener('mouseover', function() {
-    element2.innerHTML = hoverText;
-  });
-  element1.addEventListener('mouseout', function() {
-    element2.innerHTML = initialText;
-  });
-}
-
-// Uso de la función para los elementos h3
-changeTextOnHover(sliderTattos, h3SliderTattoos, initialTextTatttos, hoverTextTatttos);
-changeTextOnHover(sliderDesigns, h3SliderDesigns, initialTextDesigns, hoverTextDesigns);
