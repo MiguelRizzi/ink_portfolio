@@ -14,9 +14,11 @@
         </div>
     </header>
 {% endblock header %}
-{% block content %}
 
-<section class="container-fluid p-md-5 p-2">
+
+     
+{% block content %}
+    <section class="container-fluid p-md-5 p-2">
         {% include 'components/messages.html' %}
         <div class="rounded-5 p-sm-5 p-4 mb-5 mb-md-0 row fondo">
 
@@ -30,7 +32,7 @@
                         </form>   
                     </div>
                 </div>
-               
+                
                 <div class="card mb-4 revelar">
                     <div class="card-header fw-semibold">¡Descubre el Arte en la Piel!</div>
                     <div class="card-body pt-4 pb-5">
@@ -44,53 +46,50 @@
                 </div>
                 
             </div>
-           
-            {% if object_list %}
-                {% for post in object_list %}               
-
             
-                        <div class="col-12 col-lg-6 mb-4 order-{{forloop.counter}}">
+            {% if object_list %}
+                {% for post in object_list %}            
 
-                            <div class="card text-start rounded-1 revelar" style=" border:none;">
-                                {% if post.file %} 
-                                    {% with file_type=post.file|determine_file_type %}
-                                        {% if file_type == 'image' %}
-                                            <img src="{{ post.file.url }}" class="card-img-top object-fit-cover post-list-image" alt="{{ post.title }}"/>
-                                        {% elif file_type == 'video' %}
-                                            <video src="{{ post.file.url }}" class="card-img-top post-list-image" controls></video>
-                                        {% endif %}
-                                    {% endwith %}
-                                {% endif %}
-                                <div class="card-body">
-                                    <p class="text-secondary">
-                                        {{ post.created_on }} por <span class="fw-semibold">{{ post.user.username}}.</span>
-                                    </p>
-                                    <h4>{{post.title}}</h4>
-                                    <p class="card-text">
-                                        {{post.body|truncatechars:200}}
-                                    </p>
+                    <div class="col-12 col-lg-6 mb-4 order-{{forloop.counter}}">
+
+                        <div class="card text-start rounded-1 revelar" style="border:none;">
+                            {% if post.file %} 
+                                {% with file_type=post.file|determine_file_type %}
+                                    {% if file_type == 'image' %}
+                                        <img src="{{ post.file.url }}" class="card-img-top object-fit-cover post-list-image" alt="{{ post.title }}"/>
+                                    {% elif file_type == 'video' %}
+                                        <video src="{{ post.file.url }}" class="card-img-top post-list-image" controls></video>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endif %}
+                            <div class="card-body">
+                                <p class="text-secondary">
+                                    {{ post.created_on }} por <span class="fw-semibold">{{ post.user.username}}.</span>
+                                </p>
+                                <h4>{{post.title}}</h4>
+                                <p class="card-text">
+                                    {{post.body|truncatechars:200}}
+                                </p>
                                 <div>
                                     <a class="text-uppercase fw-semibold text-info" href="{% url 'blog:post_detail' post.id %}">Leer publicación ></a>
                                 </div>
-                                </div>
                             </div>
                         </div>
-                        
+                    </div>
+                    
                 {% endfor %}
-                {% else %}
+            {% else %}
                 <div class="col-12 col-lg-6 mb-4" >
                     
                     <div class="card revelar">
                         <div class="card-body py-4">
                             <h4 class="card-text fs-5 text-secondary">No hay Resultados.</h3>
-                            </div>
                         </div>
                     </div>
-                    {% endif %}
-
-                    {% include 'components/pagination.html' %}
                 </div>
-            </section>
-     
+            {% endif %}
 
-            {% endblock content %}
+            {% include 'components/pagination.html' %}
+        </div>
+    </section>
+{% endblock content %}
